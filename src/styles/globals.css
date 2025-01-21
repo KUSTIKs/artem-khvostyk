@@ -1,13 +1,13 @@
 :root {
   /* color */
-  --border: 0 0% 80%;
-  --foreground: 0 0% 0%;
-  --background: 0 0% 100%;
-  --muted-foreground: 0 0% 50%;
-  --primary: 0 0% 0%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 85%;
-  --secondary-foreground: 0 0% 0%;
+  --color-border: 0 0% 80%;
+  --color-foreground: 0 0% 0%;
+  --color-background: 0 0% 100%;
+  --color-muted-foreground: 0 0% 50%;
+  --color-primary: 0 0% 0%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 0 0% 85%;
+  --color-secondary-foreground: 0 0% 0%;
 
   /* font size */
   --font-sm: 0.875rem / 1.25rem;
@@ -33,16 +33,35 @@
   --container-base: 1200px;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
 body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
   font-family: var(--font-inter, "inter"), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
