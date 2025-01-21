@@ -1,5 +1,4 @@
 .button {
-  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius);
   font-size: var(--fz-base);
   line-height: var(--lh-base);
@@ -11,8 +10,26 @@
   > svg {
     height: var(--lh-sm);
     width: var(--lh-sm);
+    pointer-events: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 50%;
   }
 }
+
+// Size
+
+.button[data-size='base'] {
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.button[data-size='sm'] {
+  padding: calc(var(--space-xs) - 2px) var(--space-sm);
+}
+
+// Variant
 
 .button[data-variant='primary'] {
   background-color: hsl(var(--color-primary));
