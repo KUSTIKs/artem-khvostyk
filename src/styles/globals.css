@@ -1,0 +1,48 @@
+:root {
+  /* color */
+  --border: 0 0% 80%;
+  --foreground: 0 0% 0%;
+  --background: 0 0% 100%;
+  --muted-foreground: 0 0% 50%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 85%;
+  --secondary-foreground: 0 0% 0%;
+
+  /* font size */
+  --font-sm: 0.875rem / 1.25rem;
+  --font-base: 1rem / 1.5rem;
+  --font-lg: 1.125rem / 1.75rem;
+  --font-xl: 1.25rem / 1.75rem;
+  --font-2xl: 1.5rem / 2rem;
+  --font-3xl: 1.875rem / 2.25rem;
+  --font-4xl: 2.25rem / 2.5rem;
+  --font-5xl: 3rem / 1;
+
+  /* space */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-base: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.25rem;
+  --space-2xl: 5.25rem;
+
+  /* number */
+  --radius: 0.625rem;
+  --container-base: 1200px;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: var(--font-inter, "inter"), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
