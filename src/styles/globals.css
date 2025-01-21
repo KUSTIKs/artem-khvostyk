@@ -1,0 +1,80 @@
+:root {
+  /* color */
+  --color-border: 0 0% 90%;
+  --color-foreground: 0 0% 0%;
+  --color-background: 0 0% 100%;
+  --color-muted-foreground: 0 0% 50%;
+  --color-primary: 0 0% 0%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 0 0% 85%;
+  --color-secondary-foreground: 0 0% 0%;
+  --color-accent: 0 0% 95%;
+  --color-accent-foreground: 0 0% 10%;
+
+  /* font size */
+  --fz-sm: 0.875rem;
+  --fz-base: 1rem;
+  --fz-lg: 1.125rem;
+  --fz-xl: 1.25rem;
+  --fz-2xl: 1.5rem;
+  --fz-3xl: 1.875rem;
+  --fz-4xl: 2.25rem;
+  --fz-5xl: 3rem;
+
+  /* line height */
+  --lh-xs: 1rem;
+  --lh-sm: 1.25rem;
+  --lh-base: 1.5rem;
+  --lh-lg: 1.75rem;
+  --lh-xl: 1.75rem;
+  --lh-2xl: 2rem;
+  --lh-3xl: 2.25rem;
+  --lh-4xl: 2.5rem;
+  --lh-5xl: 1em;
+
+  /* space */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-base: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.25rem;
+  --space-2xl: 5.25rem;
+
+  /* number */
+  --radius: 0.625rem;
+  --container-base: 1200px;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: var(--font-inter, "inter"), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
