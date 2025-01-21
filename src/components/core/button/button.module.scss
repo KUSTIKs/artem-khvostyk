@@ -2,7 +2,9 @@
   border-radius: var(--radius);
   font-size: var(--fz-base);
   line-height: var(--lh-base);
-  transition: background-color 150ms ease;
+  transition-property: color, background-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
   display: flex;
   gap: var(--space-xs);
   align-items: center;

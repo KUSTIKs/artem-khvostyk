@@ -1,0 +1,41 @@
+.header {
+  position: sticky;
+  top: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-base);
+  padding: var(--space-sm) var(--space-base);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin: 0 auto;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.navLink {
+  color: hsl(var(--color-foreground));
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  transition: color 150ms ease;
+
+  &:hover {
+    color: hsl(var(--color-foreground) / 80%);
+  }
+}
+
+.logo {
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  font-weight: 600;
+}
+
+.rightContainer {
+  margin-left: auto;
+}

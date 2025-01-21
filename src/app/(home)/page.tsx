@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <main className={styles.page}>
       <h1>Hello, world</h1>
-      <Button>
+      <Button size="sm">
         <RiAddCircleLine />
         Hello, world
       </Button>

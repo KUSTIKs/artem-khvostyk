@@ -1,0 +1,48 @@
+import Link from 'next/link';
+
+import { Button } from '#src/components/core/button/button';
+
+import classes from './header.module.scss';
+
+const Header = () => {
+  return (
+    <header className={classes.header}>
+      <div className={classes.container}>
+        <Link href="/" className={classes.logo}>
+          Artem Khvostyk
+        </Link>
+        <nav>
+          <ul className={classes.navList}>
+            <li>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/projects">Projects</Link>
+              </Button>
+            </li>
+            <li>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/projects">About</Link>
+              </Button>
+            </li>
+            <li>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/projects">Thoughts</Link>
+              </Button>
+            </li>
+            <li>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/projects">Guestbook</Link>
+              </Button>
+            </li>
+          </ul>
+        </nav>
+        <div className={classes.rightContainer}>
+          <Button asChild>
+            <Link href="/contact">Contact</Link>
+          </Button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export { Header };
