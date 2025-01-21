@@ -3,6 +3,7 @@
   --color-border: 0 0% 90%;
   --color-foreground: 0 0% 0%;
   --color-background: 0 0% 100%;
+  --color-muted: 0 0% 85%;
   --color-muted-foreground: 0 0% 50%;
   --color-primary: 0 0% 0%;
   --color-primary-foreground: 0 0% 100%;
@@ -17,7 +18,7 @@
   --fz-lg: 1.125rem;
   --fz-xl: 1.25rem;
   --fz-2xl: 1.5rem;
-  --fz-3xl: 1.875rem;
+  --fz-3xl: 2rem;
   --fz-4xl: 2.25rem;
   --fz-5xl: 3rem;
 
@@ -28,7 +29,7 @@
   --lh-lg: 1.75rem;
   --lh-xl: 1.75rem;
   --lh-2xl: 2rem;
-  --lh-3xl: 2.25rem;
+  --lh-3xl: 2.5rem;
   --lh-4xl: 2.5rem;
   --lh-5xl: 1em;
 
@@ -44,6 +45,7 @@
   /* number */
   --radius: 0.625rem;
   --container-base: 1200px;
+  --container-text: 700px;
 }
 
 body {

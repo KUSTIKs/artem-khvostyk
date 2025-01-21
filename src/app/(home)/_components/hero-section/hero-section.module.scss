@@ -1,0 +1,22 @@
+@use '../../home.module.scss';
+
+.wrapper {
+  margin-block: 10rem;
+}
+
+.illustration {
+  margin-bottom: var(--space-base);
+}
+
+.text {
+  font-size: var(--fz-3xl);
+  line-height: var(--lh-3xl);
+  max-width: var(--container-text);
+  text-wrap: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-sm);
+}
