@@ -1,0 +1,6 @@
+@use '../../home.module.scss';
+
+.video {
+  border-radius: var(--radius);
+  background-color: hsl(var(--color-muted));
+}
