@@ -21,10 +21,10 @@ const Button = ({
 
   return (
     <Component
+      {...props}
       className={clsx(classes.button, className)}
       data-variant={variant}
       data-size={size}
-      {...props}
     />
   );
 };

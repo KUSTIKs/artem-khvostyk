@@ -14,9 +14,9 @@ const Separator = ({
 }: Props) => {
   return (
     <hr
+      {...props}
       className={clsx(classes.separator, className)}
       data-orientation={orientation}
-      {...props}
     />
   );
 };

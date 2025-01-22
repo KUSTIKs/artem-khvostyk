@@ -3,6 +3,7 @@
   top: 0;
   border-bottom: 1px solid hsl(var(--color-border));
   background-color: hsl(var(--color-background));
+  z-index: 999;
   // TODO: add dynamic border
 }
 

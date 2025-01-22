@@ -1,0 +1,50 @@
+@use '#src/styles/mixins.scss' as mixins;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-xs);
+  isolation: isolate;
+  position: relative;
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    background-color: transparent;
+    padding: var(--space-2xs);
+    inset: calc(-1 * var(--space-2xs));
+    border-radius: calc(var(--radius) + var(--space-2xs));
+    transition: background-color 200ms ease;
+  }
+
+  &:hover::before {
+    background-color: hsl(var(--color-accent));
+  }
+}
+
+.content {
+  margin: var(--space-2xs);
+}
+
+.image {
+  aspect-ratio: 4/3;
+  background-color: hsl(var(--color-muted));
+  border-radius: var(--radius);
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px hsl(var(--color-border));
+}
+
+.topic {
+  font-size: var(--fz-sm);
+  line-height: var(--lh-sm);
+  color: hsl(var(--color-muted-foreground));
+}
+
+.title {
+  font-weight: 500;
+  font-size: var(--fz-lg);
+  line-height: 1.25em;
+  @include mixins.truncate(2);
+}
