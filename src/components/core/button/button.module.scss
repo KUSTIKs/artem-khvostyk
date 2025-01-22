@@ -8,6 +8,7 @@
   display: flex;
   gap: var(--space-xs);
   align-items: center;
+  user-select: none;
 
   > svg {
     height: var(--lh-sm);

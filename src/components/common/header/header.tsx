@@ -36,7 +36,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className={classes.rightContainer}>
-          <Button asChild>
+          <Button size="sm" asChild>
             <Link href="/contact">Contact</Link>
           </Button>
         </div>

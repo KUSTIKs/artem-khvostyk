@@ -2,18 +2,24 @@
 
 .wrapper {
   margin-block: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .illustration {
   margin-bottom: var(--space-base);
+  user-select: none;
 }
 
 .text {
-  font-size: var(--fz-3xl);
-  line-height: var(--lh-3xl);
-  max-width: var(--container-text);
+  font-size: var(--fz-5xl);
+  line-height: 1.1em;
+  max-width: 650px;
   text-wrap: auto;
   margin-bottom: var(--space-lg);
+  font-weight: 600;
+  text-align: center;
 }
 
 .actions {

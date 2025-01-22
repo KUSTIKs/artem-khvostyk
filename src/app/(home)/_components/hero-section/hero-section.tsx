@@ -14,19 +14,18 @@ const HeroSection = () => {
           alt="development process"
           height={32}
           width={256}
+          draggable={false}
           className={classes.illustration}
         />
         <h1 className={classes.text}>
-          <b>Web Developer</b> with a growing interest in <b>design</b> based in
-          Czechia, focused on building digital solutions that are <b>simple</b>,
-          <b>functional</b>, and <b>solve problems</b>.
+          Web Developer with a growing interest in design.
         </h1>
         <div className={classes.actions}>
           <Button asChild>
             <Link href="/contact">Get in touch</Link>
           </Button>
           <Button variant="outlined" asChild>
-            <Link href="/about">React more</Link>
+            <Link href="/about">Read more</Link>
           </Button>
         </div>
       </div>
