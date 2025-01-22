@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 
+import { Footer } from '#src/components/common/footer/footer';
 import { Header } from '#src/components/common/header/header';
 
 import '../styles/globals.css';
@@ -27,6 +28,7 @@ const RootLayout = ({ children }: Props) => {
       <body className={inter.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
