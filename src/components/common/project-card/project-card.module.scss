@@ -1,0 +1,36 @@
+.content {
+  width: 100%;
+  max-width: var(--container-text);
+}
+
+.title {
+  font-size: var(--fz-2xl);
+  line-height: var(--lh-2xl);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.description {
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  color: hsl(var(--color-muted-foreground));
+  margin-bottom: var(--space-sm);
+}
+
+.services {
+  display: flex;
+  gap: var(--space-base);
+  margin-bottom: var(--space-base);
+}
+
+.button {
+  width: fit-content;
+  margin-bottom: var(--space-base);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: hsl(var(--color-muted));
+  border-radius: var(--radius);
+}

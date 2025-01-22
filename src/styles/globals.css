@@ -11,6 +11,7 @@
   --color-secondary-foreground: 0 0% 0%;
   --color-accent: 0 0% 95%;
   --color-accent-foreground: 0 0% 10%;
+  --color-lightblue: 198, 100%, 50%;
 
   /* font size */
   --fz-sm: 0.875rem;

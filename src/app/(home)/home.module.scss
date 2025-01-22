@@ -3,3 +3,10 @@
   margin: 0 auto;
   padding: var(--space-base);
 }
+
+.sectionTitle {
+  font-size: var(--fz-4xl);
+  line-height: var(--lh-4xl);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+}

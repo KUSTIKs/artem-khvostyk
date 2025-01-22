@@ -1,0 +1,13 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: hsl(var(--color-lightblue));
+  font-weight: 500;
+}
+
+.icon {
+  height: var(--lh-sm);
+  width: var(--lh-sm);
+  pointer-events: none;
+}

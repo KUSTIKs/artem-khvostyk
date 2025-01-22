@@ -1,0 +1,7 @@
+@use '../../home.module.scss';
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
