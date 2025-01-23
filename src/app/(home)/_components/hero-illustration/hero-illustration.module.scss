@@ -1,0 +1,114 @@
+$iconsCount: 5;
+$duration: 5s;
+$pause: 1s;
+
+$iconSize: 2rem;
+$arrowSize: 1.5rem;
+$baseOffset: -0.25rem;
+
+// Calculated
+$totalWidth: calc($iconsCount * ($iconSize + $arrowSize) - $arrowSize);
+$totalDuration: calc($duration + $pause);
+$totalTimeline: calc(100% * $duration / $totalDuration);
+
+.wrapper {
+  position: relative;
+}
+
+.clipContainer,
+.wrapper {
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  position: relative;
+  color: hsl(var(--color-muted-foreground) / 50%);
+}
+
+.clipContainer {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  opacity: 0;
+  animation: slideWindow $totalDuration ease infinite;
+
+  .icon {
+    &_think {
+      color: hsl(0 100% 60%);
+    }
+    &_design {
+      color: hsl(45 100% 50%);
+    }
+    &_build {
+      color: hsl(160 100% 35%);
+    }
+    &_launch {
+      color: hsl(200 100% 50%);
+    }
+    &_repeat {
+      color: hsl(270 100% 65%);
+    }
+  }
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: $baseOffset calc($baseOffset - $iconSize - $arrowSize);
+    background-color: hsl(var(--color-accent));
+  }
+}
+
+.icon {
+  color: inherit;
+  height: $iconSize;
+  width: $iconSize;
+}
+
+.arrow {
+  color: inherit;
+  height: $arrowSize;
+  width: $arrowSize;
+}
+
+@mixin clip($offsetLeft) {
+  $offsetRight: calc($totalWidth - $offsetLeft - $iconSize);
+
+  // prettier-ignore
+  clip-path: inset(
+    $baseOffset
+    calc($baseOffset + $offsetRight)
+    $baseOffset
+    calc($baseOffset + $offsetLeft)
+    round var(--radius)
+  );
+}
+
+@keyframes slideWindow {
+  // one stage for each icon + 2 for start end finish
+  $totalStagesCount: $iconsCount + 2;
+  $step: calc($totalTimeline / ($totalStagesCount - 1) / 3);
+
+  0%,
+  #{$step} {
+    @include clip(calc(-1 * $iconSize));
+    opacity: 0;
+  }
+
+  100%,
+  #{$totalTimeline},
+  #{$totalTimeline - $step} {
+    @include clip($totalWidth);
+    opacity: 0;
+  }
+
+  @for $i from 1 through $iconsCount {
+    $offsetLeft: calc(($i - 1) * ($iconSize + $arrowSize));
+    $percentage: calc($totalTimeline / ($totalStagesCount - 1) * $i);
+
+    #{$percentage - $step},
+    #{$percentage + $step} {
+      @include clip($offsetLeft);
+      opacity: 1;
+    }
+  }
+}

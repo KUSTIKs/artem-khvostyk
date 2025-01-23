@@ -3,20 +3,14 @@ import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
 
+import { HeroIllustration } from '../hero-illustration/hero-illustration';
 import classes from './hero-section.module.scss';
 
 const HeroSection = () => {
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
-        <Image
-          src="/hero-illustration.svg"
-          alt="development process"
-          height={32}
-          width={256}
-          draggable={false}
-          className={classes.illustration}
-        />
+        <HeroIllustration className={classes.illustration} />
         <h1 className={classes.text}>
           Web Developer with a growing interest in design.
         </h1>
