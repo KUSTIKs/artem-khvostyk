@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
+import { contactLink } from '#src/constants/links';
 
 import classes from './about.module.scss';
 
@@ -28,7 +29,7 @@ const AboutPage = () => {
           </p>
         </div>
         <Button variant="outlined" asChild>
-          <Link href="/contact">Get in touch</Link>
+          <Link href={contactLink}>Get in touch</Link>
         </Button>
       </div>
     </main>

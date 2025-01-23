@@ -2,8 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
-
+import { contactLink } from '#src/constants/links';
 import { HeroIllustration } from '../hero-illustration/hero-illustration';
+
 import classes from './hero-section.module.scss';
 
 const HeroSection = () => {
@@ -16,7 +17,7 @@ const HeroSection = () => {
         </h1>
         <div className={classes.actions}>
           <Button asChild>
-            <Link href="/contact">Get in touch</Link>
+            <Link href={contactLink}>Get in touch</Link>
           </Button>
           <Button variant="outlined" asChild>
             <Link href="/about">Read more</Link>

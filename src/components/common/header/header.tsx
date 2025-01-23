@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
+import { contactLink } from '#src/constants/links';
 
 import classes from './header.module.scss';
 
@@ -37,7 +38,7 @@ const Header = () => {
         </nav>
         <div className={classes.rightContainer}>
           <Button size="sm" asChild>
-            <Link href="/contact">Contact</Link>
+            <Link href={contactLink}>Contact</Link>
           </Button>
         </div>
       </div>
