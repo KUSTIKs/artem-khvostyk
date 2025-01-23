@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   max-width: var(--container-base);
-  margin: 0 auto;
+  margin: var(--space-xl) auto;
   padding: var(--space-base);
 }
 
@@ -9,7 +9,6 @@
   font-size: var(--fz-5xl);
   line-height: var(--lh-5xl);
   font-weight: 700;
-  margin-top: var(--space-base);
   margin-bottom: var(--space-base);
 }
 
@@ -22,5 +21,4 @@
 .projects {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--space-lg);
 }

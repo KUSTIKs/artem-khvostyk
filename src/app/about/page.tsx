@@ -8,8 +8,8 @@ const AboutPage = () => {
   return (
     <main>
       <div className={classes.container}>
+        <h1 className={classes.title}>About</h1>
         <div className={classes.content}>
-          <h1>About</h1>
           <p>
             Dolor sit amet consectetur adipisicing elit. Nam quis iusto nesciunt
             rerum tempore impedit ducimus.

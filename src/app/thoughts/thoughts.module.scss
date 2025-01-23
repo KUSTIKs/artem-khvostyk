@@ -1,8 +1,8 @@
 .container {
   width: 100%;
   max-width: var(--container-text);
-  margin: var(--space-xl) auto;
   padding: var(--space-base);
+  margin: var(--space-xl) auto;
 }
 
 .title {
@@ -12,12 +12,9 @@
   margin-bottom: var(--space-base);
 }
 
-.content {
+.message {
   font-size: var(--fz-lg);
   line-height: var(--lh-lg);
   margin-bottom: var(--space-base);
-
-  p {
-    margin-block: var(--space-xs);
-  }
+  color: hsl(var(--color-muted-foreground));
 }
