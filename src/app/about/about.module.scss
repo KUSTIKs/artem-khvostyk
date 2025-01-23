@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  max-width: var(--container-text);
+  margin: var(--space-xl) auto;
+  padding: var(--space-base);
+}
+
+.content {
+  font-size: var(--fz-lg);
+  line-height: var(--lh-lg);
+  margin-bottom: var(--space-base);
+  h1 {
+    margin-block: var(--space-base);
+    font-size: var(--fz-3xl);
+    line-height: var(--lh-3xl);
+    font-weight: 700;
+  }
+  p {
+    margin-block: var(--space-xs);
+  }
+}

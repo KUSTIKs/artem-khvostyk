@@ -20,17 +20,17 @@ const Header = () => {
             </li>
             <li>
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/projects">About</Link>
+                <Link href="/about">About</Link>
               </Button>
             </li>
             <li>
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/projects">Thoughts</Link>
+                <Link href="/thoughts">Thoughts</Link>
               </Button>
             </li>
             <li>
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/projects">Guestbook</Link>
+                <Link href="/guestbook">Guestbook</Link>
               </Button>
             </li>
           </ul>

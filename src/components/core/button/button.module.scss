@@ -9,6 +9,7 @@
   gap: var(--space-xs);
   align-items: center;
   user-select: none;
+  width: max-content;
 
   > svg {
     height: var(--lh-sm);
