@@ -16,7 +16,7 @@ type Props = {
 
 const ProjectCard = ({ title, description, imageSrcs, services }: Props) => {
   return (
-    <article>
+    <article className={classes.card}>
       <div className={classes.content}>
         <h3 className={classes.title}>{title}</h3>
         <p className={classes.description}>{description}</p>
@@ -33,7 +33,9 @@ const ProjectCard = ({ title, description, imageSrcs, services }: Props) => {
           </Link>
         </Button>
       </div>
-      <img src={imageSrcs.at(0)} alt="preview" className={classes.image} />
+      {imageSrcs.length > 0 && (
+        <img src={imageSrcs.at(0)} alt="preview" className={classes.image} />
+      )}
     </article>
   );
 };
