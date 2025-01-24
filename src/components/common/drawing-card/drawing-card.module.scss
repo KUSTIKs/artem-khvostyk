@@ -1,0 +1,28 @@
+@use '#src/styles/mixins' as mixins;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.drawing {
+  aspect-ratio: 1/1;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: 0 0 0 1px hsl(var(--color-border));
+}
+
+.title {
+  font-size: var(--fz-lg);
+  line-height: var(--lh-lg);
+  font-weight: 500;
+  @include mixins.truncate(2);
+}
+
+.info {
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  font-weight: 500;
+  color: hsl(var(--color-muted-foreground));
+}

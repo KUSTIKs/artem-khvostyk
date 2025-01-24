@@ -13,7 +13,7 @@
 }
 
 .content {
-  margin-top: var(--space-base);
+  margin-top: var(--space-lg);
 }
 
 .message {
@@ -21,4 +21,10 @@
   line-height: var(--lh-lg);
   margin-bottom: var(--space-base);
   color: hsl(var(--color-muted-foreground));
+}
+
+.drawings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-lg) var(--space-base);
 }
