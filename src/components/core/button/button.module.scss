@@ -24,7 +24,7 @@
 
 .button[data-size='base'] {
   padding: var(--space-xs) var(--space-sm);
-  min-height: calc(var(--space-xs) * 2 + var(--lh-base));
+  height: var(--size-button-base);
 
   > svg {
     height: var(--lh-sm);
@@ -34,7 +34,7 @@
 
 .button[data-size='sm'] {
   padding: calc(var(--space-xs) - 2px) var(--space-sm);
-  min-height: calc((var(--space-xs) - 2px) * 2 + var(--lh-base));
+  height: var(--size-button-sm);
 
   > svg {
     height: 1em;

@@ -46,6 +46,10 @@
   --radius: 0.625rem;
   --container-base: 1200px;
   --container-text: 700px;
+
+  /* calculated */
+  --size-button-base: calc(var(--space-xs) * 2 + var(--lh-base));
+  --size-button-sm: calc((var(--space-xs) - 2px) * 2 + var(--lh-base));
 }
 
 body {

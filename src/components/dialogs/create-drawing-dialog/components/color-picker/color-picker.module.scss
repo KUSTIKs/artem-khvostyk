@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.color {
+  border-radius: 50%;
+  height: var(--size-button-base);
+  width: var(--size-button-base);
+  background-color: hsl(var(--color-muted));
+  position: relative;
+}
+
+.indicator {
+  position: absolute;
+  display: block;
+  inset: var(--space-2xs);
+  box-shadow: 0 0 0 var(--space-2xs) inset white;
+  border-radius: 50%;
+  animation: indicatorShow 150ms ease;
+}
+
+@keyframes indicatorShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

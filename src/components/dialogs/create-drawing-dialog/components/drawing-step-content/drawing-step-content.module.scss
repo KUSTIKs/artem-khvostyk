@@ -1,0 +1,21 @@
+.wrapper {
+}
+
+.canvasWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--color-border));
+  overflow: hidden;
+  margin-bottom: var(--space-base);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2xs);
+}
