@@ -1,3 +1,5 @@
+@use '#src/styles/mixins' as mixins;
+
 .header {
   position: sticky;
   top: 0;
@@ -15,6 +17,22 @@
   align-items: center;
   gap: var(--space-lg);
   margin: 0 auto;
+}
+
+.nav {
+  display: none;
+
+  @include mixins.from-tablet {
+    display: block;
+  }
+}
+
+.sidebarMenuButton {
+  display: block;
+
+  @include mixins.from-tablet {
+    display: none;
+  }
 }
 
 .navList {
@@ -42,4 +60,6 @@
 
 .rightContainer {
   margin-left: auto;
+  display: flex;
+  gap: var(--space-xs);
 }

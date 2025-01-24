@@ -4,3 +4,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@mixin from-tablet {
+  @media screen and (min-width: 900px) {
+    @content;
+  }
+}

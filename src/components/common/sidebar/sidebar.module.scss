@@ -1,0 +1,61 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: hsl(0 0% 0% / 50%);
+  z-index: 99999;
+  animation: overlayShow 150ms ease;
+}
+
+.content {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: 100%;
+  max-width: 400px;
+  z-index: 99999;
+  animation: contentShow 150ms ease;
+}
+
+.sidebar {
+  height: 100%;
+  padding: var(--space-base);
+  background-color: hsl(var(--color-background));
+}
+
+.header {
+  display: flex;
+  margin-bottom: var(--space-lg);
+}
+
+.closeButton {
+  margin-left: auto;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-base);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

@@ -9,11 +9,8 @@
   gap: var(--space-xs);
   align-items: center;
   user-select: none;
-  width: max-content;
 
   > svg {
-    height: var(--lh-sm);
-    width: var(--lh-sm);
     pointer-events: none;
   }
 
@@ -27,10 +24,22 @@
 
 .button[data-size='base'] {
   padding: var(--space-xs) var(--space-sm);
+  min-height: calc(var(--space-xs) * 2 + var(--lh-base));
+
+  > svg {
+    height: var(--lh-sm);
+    width: var(--lh-sm);
+  }
 }
 
 .button[data-size='sm'] {
   padding: calc(var(--space-xs) - 2px) var(--space-sm);
+  min-height: calc((var(--space-xs) - 2px) * 2 + var(--lh-base));
+
+  > svg {
+    height: 1em;
+    width: 1em;
+  }
 }
 
 // Variant

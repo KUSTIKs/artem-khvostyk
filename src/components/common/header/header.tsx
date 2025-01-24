@@ -1,7 +1,9 @@
+import { RiMenuLine } from '@remixicon/react';
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
-import { contactLink } from '#src/constants/links';
+import { contactLink, navLinks } from '#src/constants/links';
+import { Sidebar } from '../sidebar/sidebar';
 
 import classes from './header.module.scss';
 
@@ -12,34 +14,30 @@ const Header = () => {
         <Link href="/" className={classes.logo}>
           Artem Khvostyk
         </Link>
-        <nav>
+        <nav className={classes.nav}>
           <ul className={classes.navList}>
-            <li>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/projects">Projects</Link>
-              </Button>
-            </li>
-            <li>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/about">About</Link>
-              </Button>
-            </li>
-            <li>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/thoughts">Thoughts</Link>
-              </Button>
-            </li>
-            <li>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/guestbook">Guestbook</Link>
-              </Button>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href={link.href}>{link.label}</Link>
+                </Button>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className={classes.rightContainer}>
           <Button size="sm" asChild>
             <Link href={contactLink}>Contact</Link>
           </Button>
+          <Sidebar>
+            <Button
+              variant="outlined"
+              size="sm"
+              className={classes.sidebarMenuButton}
+            >
+              <RiMenuLine />
+            </Button>
+          </Sidebar>
         </div>
       </div>
     </header>

@@ -28,9 +28,11 @@ const AboutPage = () => {
             facilis eum quod.
           </p>
         </div>
-        <Button variant="outlined" asChild>
-          <Link href={contactLink}>Get in touch</Link>
-        </Button>
+        <div className={classes.actions}>
+          <Button variant="outlined" asChild>
+            <Link href={contactLink}>Get in touch</Link>
+          </Button>
+        </div>
       </div>
     </main>
   );

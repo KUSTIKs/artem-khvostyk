@@ -21,3 +21,8 @@
     margin-block: var(--space-xs);
   }
 }
+
+.actions {
+  display: flex;
+  gap: var(--space-xs);
+}
