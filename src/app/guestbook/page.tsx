@@ -1,3 +1,5 @@
+import { ConnectGithubAlert } from './_components/connect-github-alert/connect-github-alert';
+
 import classes from './guestbook.module.scss';
 
 const GuestbookPage = () => {
@@ -5,7 +7,10 @@ const GuestbookPage = () => {
     <main>
       <div className={classes.container}>
         <h1 className={classes.title}>Guestbook</h1>
-        <p className={classes.message}>Ne guests were here</p>
+        <ConnectGithubAlert />
+        <div className={classes.content}>
+          <p className={classes.message}>No guests were here</p>
+        </div>
       </div>
     </main>
   );

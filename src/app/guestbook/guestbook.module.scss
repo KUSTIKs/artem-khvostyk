@@ -9,7 +9,11 @@
   font-size: var(--fz-3xl);
   line-height: var(--lh-3xl);
   font-weight: 700;
-  margin-bottom: var(--space-base);
+  margin-bottom: var(--space-xs);
+}
+
+.content {
+  margin-top: var(--space-base);
 }
 
 .message {

@@ -1,0 +1,20 @@
+.alert {
+  padding: var(--space-sm);
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--color-border));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--fz-lg);
+  line-height: 1.1em;
+  font-weight: 500;
+}
+
+.description {
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  color: hsl(var(--color-muted-foreground));
+}
