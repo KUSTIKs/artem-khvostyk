@@ -1,0 +1,43 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.drawing {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+}
+
+.title,
+.info,
+.drawing {
+  background-color: hsl(var(--color-muted) / 25%);
+}
+
+.title,
+.info {
+  border-radius: 6px;
+  height: 100%;
+}
+
+.title {
+  width: 95%;
+}
+
+.info {
+  width: 60%;
+}
+
+.titleWrapper {
+  height: var(--lh-lg);
+}
+
+.infoWrapper {
+  height: var(--lh-base);
+}
+
+.titleWrapper,
+.infoWrapper {
+  padding: 2px 0;
+}

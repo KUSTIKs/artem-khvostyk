@@ -7,10 +7,10 @@
 }
 
 .drawing {
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius);
   object-fit: cover;
-  box-shadow: 0 0 0 1px hsl(var(--color-border));
+  border: 1px solid hsl(var(--color-border));
 }
 
 .title {

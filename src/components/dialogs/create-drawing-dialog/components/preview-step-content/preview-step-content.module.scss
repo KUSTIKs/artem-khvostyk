@@ -1,0 +1,13 @@
+.frame {
+  overflow: hidden;
+}
+
+.drawings {
+  display: flex;
+  gap: var(--space-base);
+  place-content: center;
+
+  > * {
+    flex: 0 0 250px;
+  }
+}

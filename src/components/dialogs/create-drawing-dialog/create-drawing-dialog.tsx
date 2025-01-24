@@ -6,6 +6,7 @@ import { DrawingStepContent } from './components/drawing-step-content/drawing-st
 import { NamingStepContent } from './components/naming-step-content/naming-step-content';
 
 import classes from './create-drawing-dialog.module.scss';
+import { PreviewStepContent } from './components/preview-step-content/preview-step-content';
 
 const CreateDrawingDialog = () => {
   return (
@@ -22,7 +23,8 @@ const CreateDrawingDialog = () => {
             </Dialog.Description>
           </header>
           {/* <DrawingStepContent /> */}
-          <NamingStepContent />
+          {/* <NamingStepContent /> */}
+          <PreviewStepContent />
           <footer className={classes.footer}>
             <p className={classes.steps}>1 of 3</p>
             <div className={classes.actions}>
