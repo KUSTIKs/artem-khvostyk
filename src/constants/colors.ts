@@ -7,7 +7,6 @@ const pickerColors = [
   '#007EF5',
   '#9B4CF5',
   '#000000',
-  '#FFFFFF',
 ];
 
 export { pickerColors };
