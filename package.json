@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "3.10.0",
     "@radix-ui/react-dialog": "1.1.5",
+    "@radix-ui/react-form": "0.1.1",
     "@radix-ui/react-radio-group": "1.2.2",
     "@radix-ui/react-slot": "1.1.1",
     "@radix-ui/react-visually-hidden": "1.1.1",
@@ -18,8 +20,10 @@
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "7.54.2",
     "react-sketch-canvas": "6.2.0",
-    "sass": "1.83.4"
+    "sass": "1.83.4",
+    "zod": "3.24.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

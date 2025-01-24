@@ -3,6 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '#src/components/core/button/button';
 
 import { DrawingStepContent } from './components/drawing-step-content/drawing-step-content';
+import { NamingStepContent } from './components/naming-step-content/naming-step-content';
+
 import classes from './create-drawing-dialog.module.scss';
 
 const CreateDrawingDialog = () => {
@@ -19,7 +21,8 @@ const CreateDrawingDialog = () => {
               Your drawing will be displayed in guestbook
             </Dialog.Description>
           </header>
-          <DrawingStepContent />
+          {/* <DrawingStepContent /> */}
+          <NamingStepContent />
           <footer className={classes.footer}>
             <p className={classes.steps}>1 of 3</p>
             <div className={classes.actions}>
