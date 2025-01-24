@@ -1,13 +1,16 @@
+'use client';
+
 import * as Dialog from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { RiCloseLine } from '@remixicon/react';
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import { Button } from '#src/components/core/button/button';
+import { Separator } from '#src/components/core/separator/separator';
 import { contactLink, navLinks } from '#src/constants/links';
 
-import { Separator } from '#src/components/core/separator/separator';
 import classes from './sidebar.module.scss';
 
 type Props = {
@@ -15,8 +18,16 @@ type Props = {
 };
 
 const Sidebar = ({ children }: Props) => {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Sidebar has to be closed on pathname change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
-    <Dialog.Root>
+    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={classes.overlay} />
