@@ -27,7 +27,7 @@
   }
 }
 
-.sidebarMenuButton {
+.rightContainer .sidebarMenuButton {
   display: block;
 
   @include mixins.from-tablet {
