@@ -1,29 +1,26 @@
-'use client';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as Dialog from '@radix-ui/react-dialog';
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { useId } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from '#src/components/core/button/button';
 import * as Form from '#src/components/core/form/form';
 import {
   type NameDrawingSchemaType,
   nameDrawingSchema,
 } from '../../utils/name-drawing-schema';
-import { drawingNameAtom, drawingUrlAtom } from '../../utils/store';
+import {
+  activeStepIndexAtom,
+  drawingNameAtom,
+  drawingUrlAtom,
+} from '../../utils/store';
+import { BackButton, ContinueButton, Counter } from '../common/common';
+
 import classes from './naming-step-dialog.module.scss';
 
-import { Counter } from '../counter/counter';
-
-type Props = {
-  handleBack: () => void;
-  handleContinue: () => void;
-};
-
-const NamingStepDialog = ({ handleBack, handleContinue }: Props) => {
+const NamingStepDialog = () => {
   const drawingUrl = useAtomValue(drawingUrlAtom);
+  const setActiveStepIndex = useSetAtom(activeStepIndexAtom);
   const [name, setName] = useAtom(drawingNameAtom);
   const form = useForm<NameDrawingSchemaType>({
     resolver: zodResolver(nameDrawingSchema),
@@ -35,7 +32,7 @@ const NamingStepDialog = ({ handleBack, handleContinue }: Props) => {
 
   const handleSumbmit: SubmitHandler<NameDrawingSchemaType> = ({ name }) => {
     setName(name);
-    handleContinue();
+    setActiveStepIndex((value) => value + 1);
   };
 
   if (drawingUrl === null) {
@@ -68,12 +65,8 @@ const NamingStepDialog = ({ handleBack, handleContinue }: Props) => {
       <div className={classes.footer}>
         <Counter />
         <div className={classes.actions}>
-          <Button variant="outlined" onClick={handleBack}>
-            Back
-          </Button>
-          <Button type="submit" form={formId}>
-            Continue
-          </Button>
+          <BackButton />
+          <ContinueButton type="submit" form={formId} />
         </div>
       </div>
     </>

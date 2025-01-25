@@ -1,7 +1,4 @@
-'use client';
-
 import * as Dialog from '@radix-ui/react-dialog';
-import { RiLoader2Line } from '@remixicon/react';
 import { useSetAtom } from 'jotai';
 import { useRef, useState } from 'react';
 import {
@@ -13,19 +10,14 @@ import { Button } from '#src/components/core/button/button';
 import { pickerColors } from '#src/constants/colors';
 import { drawingUrlAtom } from '../../utils/store';
 import { ColorPicker } from '../color-picker/color-picker';
-import { Counter } from '../counter/counter';
 
+import { BackButton, ContinueButton, Counter } from '../common/common';
 import classes from './drawing-step-dialog.module.scss';
 
-type Props = {
-  handleContinue: () => void;
-};
-
-const DrawingStepDialog = ({ handleContinue }: Props) => {
+const DrawingStepDialog = () => {
   const canvasRef = useRef<ReactSketchCanvasRef>(null);
   const [color, setColor] = useState(pickerColors[0]);
   const setDrawingUrl = useSetAtom(drawingUrlAtom);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleUndo = () => {
     canvasRef.current?.undo();
@@ -34,9 +26,7 @@ const DrawingStepDialog = ({ handleContinue }: Props) => {
     canvasRef.current?.redo();
   };
 
-  const handleSubmit = async () => {
-    setIsLoading(true);
-
+  const exportImage = async () => {
     const image = await canvasRef.current?.exportImage('png');
 
     if (!image) {
@@ -44,9 +34,6 @@ const DrawingStepDialog = ({ handleContinue }: Props) => {
     }
 
     setDrawingUrl(image);
-    setIsLoading(false);
-
-    handleContinue();
   };
 
   return (
@@ -58,7 +45,7 @@ const DrawingStepDialog = ({ handleContinue }: Props) => {
         </Dialog.Description>
       </header>
 
-      <div className={classes.content} data-loading={isLoading}>
+      <div>
         <div className={classes.canvasWrapper}>
           <ReactSketchCanvas
             ref={canvasRef}
@@ -85,13 +72,8 @@ const DrawingStepDialog = ({ handleContinue }: Props) => {
       <div className={classes.footer}>
         <Counter />
         <div className={classes.actions}>
-          <Button variant="outlined" disabled>
-            Back
-          </Button>
-          <Button disabled={isLoading} onClick={handleSubmit}>
-            {isLoading && <RiLoader2Line className="spin" />}
-            Continue
-          </Button>
+          <BackButton />
+          <ContinueButton action={exportImage} />
         </div>
       </div>
     </>

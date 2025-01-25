@@ -3,17 +3,17 @@ import { useAtomValue } from 'jotai';
 
 import { DrawingCardPreview } from '#src/components/common/drawing-card-placeholder/drawing-card-placeholder';
 import { DrawingCard } from '#src/components/common/drawing-card/drawing-card';
-import { Button } from '#src/components/core/button/button';
 import { drawingNameAtom, drawingUrlAtom } from '../../utils/store';
+import {
+  BackButton,
+  ContinueButton,
+  Counter,
+  SubmitButton,
+} from '../common/common';
 
-import { Counter } from '../counter/counter';
 import classes from './preview-step-dialog.module.scss';
 
-type Props = {
-  handleBack: () => void;
-};
-
-const PreviewStepDialog = ({ handleBack }: Props) => {
+const PreviewStepDialog = () => {
   const drawingUrl = useAtomValue(drawingUrlAtom);
   const drawingName = useAtomValue(drawingNameAtom);
 
@@ -50,10 +50,8 @@ const PreviewStepDialog = ({ handleBack }: Props) => {
       <div className={classes.footer}>
         <Counter />
         <div className={classes.actions}>
-          <Button variant="outlined" onClick={handleBack}>
-            Back
-          </Button>
-          <Button onClick={handleSubmit}>Publish</Button>
+          <BackButton />
+          <SubmitButton action={handleSubmit} />
         </div>
       </div>
     </>
