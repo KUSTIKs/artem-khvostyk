@@ -17,6 +17,7 @@ const CreateDrawingDialog = ({ children }: Props) => {
 
   return (
     <Dialog.Root open>
+      <Dialog.Trigger>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <div className={classes.overlay} />
         <Dialog.Overlay className={classes.dialogWrapper}>
