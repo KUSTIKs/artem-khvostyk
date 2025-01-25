@@ -5,6 +5,7 @@ const drawingUrlAtom = atom<string | null>(null);
 const drawingNameAtom = atom<string | null>(null);
 const activeStepIndexAtom = atom<number>(0);
 const isLoadingAtom = atom<boolean>(false);
+const isOpenAtom = atom<boolean>(false);
 
 const activeStepAtom = atom((get) => {
   const activeStepIndex = get(activeStepIndexAtom);
@@ -17,4 +18,5 @@ export {
   activeStepIndexAtom,
   isLoadingAtom,
   activeStepAtom,
+  isOpenAtom,
 };
