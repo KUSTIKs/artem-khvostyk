@@ -1,5 +1,4 @@
-.wrapper {
-}
+@use '../../create-drawing-dialog.module.scss';
 
 .canvasWrapper {
   width: 100%;
@@ -10,12 +9,12 @@
   margin-bottom: var(--space-base);
 }
 
-.footer {
+.canvasFooter {
   display: flex;
   justify-content: space-between;
 }
 
-.actions {
+.canvasActions {
   display: flex;
   gap: var(--space-2xs);
 }

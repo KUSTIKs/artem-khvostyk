@@ -1,37 +1,51 @@
+'use client';
+
 import * as Dialog from '@radix-ui/react-dialog';
+import { useAtom } from 'jotai';
+import type { ReactNode } from 'react';
 
-import { Button } from '#src/components/core/button/button';
-
-import { DrawingStepContent } from './components/drawing-step-content/drawing-step-content';
-import { NamingStepContent } from './components/naming-step-content/naming-step-content';
+import { DrawingStepDialog } from './components/drawing-step-dialog/drawing-step-dialog';
+import { NamingStepDialog } from './components/naming-step-dialog/naming-step-dialog';
+import { PreviewStepDialog } from './components/preview-step-dialog/preview-step-dialog';
+import { activeStepIndexAtom } from './utils/store';
 
 import classes from './create-drawing-dialog.module.scss';
-import { PreviewStepContent } from './components/preview-step-content/preview-step-content';
+
+const steps = [DrawingStepDialog, NamingStepDialog, PreviewStepDialog];
+
+type Props = {
+  children: ReactNode;
+};
 
 const CreateDrawingDialog = () => {
+  const [activeStepIndex, setActiveStepIndex] = useAtom(activeStepIndexAtom);
+
+  const handleContinue = () => {
+    setActiveStepIndex((value) => value + 1);
+  };
+  const handleBack = () => {
+    setActiveStepIndex((value) => value - 1);
+  };
+
   return (
     <Dialog.Root open>
       <Dialog.Portal>
         <Dialog.Overlay className={classes.overlay} />
-        <Dialog.Content className={classes.dialog}>
-          <header className={classes.header}>
-            <Dialog.Title className={classes.title}>
-              Create drawing
-            </Dialog.Title>
-            <Dialog.Description className={classes.description}>
-              Your drawing will be displayed in guestbook
-            </Dialog.Description>
-          </header>
-          {/* <DrawingStepContent /> */}
-          {/* <NamingStepContent /> */}
-          <PreviewStepContent />
-          <footer className={classes.footer}>
-            <p className={classes.steps}>1 of 3</p>
-            <div className={classes.actions}>
-              <Button variant="outlined">Back</Button>
-              <Button>Continue</Button>
-            </div>
-          </footer>
+        <Dialog.Content className={classes.dialogWrapper}>
+          <div className={classes.dialog}>
+            {activeStepIndex === 0 && (
+              <DrawingStepDialog handleContinue={handleContinue} />
+            )}
+            {activeStepIndex === 1 && (
+              <NamingStepDialog
+                handleContinue={handleContinue}
+                handleBack={handleBack}
+              />
+            )}
+            {activeStepIndex === 2 && (
+              <PreviewStepDialog handleBack={handleBack} />
+            )}
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

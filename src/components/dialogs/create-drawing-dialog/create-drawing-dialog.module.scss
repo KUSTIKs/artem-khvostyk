@@ -6,18 +6,31 @@
   animation: overlayShow 150ms ease;
 }
 
-.dialog {
+.dialogWrapper {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.dialog {
+  max-height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
   width: 100%;
   max-width: 700px;
-  z-index: 99999;
   animation: contentShow 150ms ease;
   padding: var(--space-lg);
   border-radius: var(--radius);
   background-color: hsl(var(--color-background));
+}
+
+.content[data-loading='true'] {
+  opacity: 50%;
+  pointer-events: none;
+  transition: opacity 150ms ease;
 }
 
 .header {
@@ -45,13 +58,6 @@
 .actions {
   display: flex;
   gap: var(--space-sm);
-}
-
-.steps {
-  font-size: var(--fz-base);
-  line-height: var(--lh-base);
-  font-weight: 500;
-  color: hsl(var(--color-muted-foreground));
 }
 
 @keyframes overlayShow {

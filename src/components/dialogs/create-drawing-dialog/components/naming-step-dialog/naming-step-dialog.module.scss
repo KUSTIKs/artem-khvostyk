@@ -1,7 +1,13 @@
+@use '../../create-drawing-dialog.module.scss';
+
 .drawing {
   height: 250px;
   width: 250px;
   border-radius: var(--radius);
   border: 1px solid hsl(var(--color-border));
   margin-bottom: var(--space-base);
+}
+
+.form {
+  display: contents;
 }
