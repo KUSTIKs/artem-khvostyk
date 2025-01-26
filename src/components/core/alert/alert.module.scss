@@ -3,13 +3,13 @@
   border-radius: var(--radius);
   border: 1px solid hsl(var(--color-border));
   display: flex;
-  justify-content: space-between;
+  gap: var(--space-xs);
   align-items: center;
 }
 
 .title {
   font-size: var(--fz-lg);
-  line-height: 1.1em;
+  line-height: var(--lh-lg);
   font-weight: 500;
 }
 
@@ -17,4 +17,8 @@
   font-size: var(--fz-base);
   line-height: var(--lh-base);
   color: hsl(var(--color-muted-foreground));
+}
+
+.action {
+  margin-left: auto;
 }

@@ -1,25 +1,38 @@
+'use client';
+
+import { SignedIn, SignedOut, useUser } from '@clerk/nextjs';
 import { RiBrushLine } from '@remixicon/react';
 
-import { DrawingCard } from '#src/components/common/drawing-card/drawing-card';
 import { Button } from '#src/components/core/button/button';
 import { CreateDrawingDialog } from '#src/components/dialogs/create-drawing-dialog/create-drawing-dialog';
 import { ConnectGithubAlert } from './_components/connect-github-alert/connect-github-alert';
+import { SignOutAlert } from './_components/sign-out-alert/sign-out-alert';
 
 import classes from './guestbook.module.scss';
 
 const GuestbookPage = () => {
+  const { user } = useUser();
+
   return (
     <main>
       <div className={classes.container}>
         <h1 className={classes.title}>Guestbook</h1>
-        {/* <ConnectGithubAlert /> */}
-        <Button variant="outlined">
-          <RiBrushLine />
-          Draw
-        </Button>
+        <SignedOut>
+          <ConnectGithubAlert />
+        </SignedOut>
+        <SignedIn>
+          <SignOutAlert />
+          <div className={classes.actions}>
+            <CreateDrawingDialog>
+              <Button variant="outlined">
+                <RiBrushLine />
+                Draw
+              </Button>
+            </CreateDrawingDialog>
+          </div>
+        </SignedIn>
         <div className={classes.content}>
           <p className={classes.message}>No guests were here</p>
-          <CreateDrawingDialog />
           {/* <div className={classes.drawings}>
             <DrawingCard
               author="Scott Strickland"

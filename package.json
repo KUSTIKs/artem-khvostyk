@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "6.10.2",
     "@hookform/resolvers": "3.10.0",
     "@radix-ui/react-dialog": "1.1.5",
     "@radix-ui/react-form": "0.1.1",
@@ -17,6 +18,7 @@
     "@radix-ui/react-tabs": "1.1.2",
     "@radix-ui/react-visually-hidden": "1.1.1",
     "@remixicon/react": "4.6.0",
+    "@supabase/ssr": "0.5.2",
     "clsx": "2.1.1",
     "jotai": "2.11.1",
     "next": "15.1.5",

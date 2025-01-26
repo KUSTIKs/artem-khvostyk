@@ -1,23 +1,29 @@
 import { RiGithubFill } from '@remixicon/react';
 
+import * as Alert from '#src/components/core/alert/alert';
 import { Button } from '#src/components/core/button/button';
 
-import classes from './connect-github-alert.module.scss';
+import { SignInButton } from '@clerk/nextjs';
 
 const ConnectGithubAlert = () => {
   return (
-    <div className={classes.alert}>
+    <Alert.Root>
       <div>
-        <p className={classes.title}>Add your drawing</p>
-        <p className={classes.description}>
+        <Alert.Title>Add your drawing</Alert.Title>
+        <Alert.Description>
           To add a drawing you first need to connect GitHub
-        </p>
+        </Alert.Description>
       </div>
-      <Button>
-        <RiGithubFill />
-        Connect GitHub
-      </Button>
-    </div>
+
+      <Alert.Action>
+        <SignInButton>
+          <Button>
+            <RiGithubFill />
+            Connect GitHub
+          </Button>
+        </SignInButton>
+      </Alert.Action>
+    </Alert.Root>
   );
 };
 

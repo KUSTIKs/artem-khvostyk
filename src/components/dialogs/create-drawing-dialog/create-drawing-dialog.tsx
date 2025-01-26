@@ -1,10 +1,10 @@
 'use client';
 
 import * as Dialog from '@radix-ui/react-dialog';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import type { ReactNode } from 'react';
 
-import { activeStepAtom, activeStepIndexAtom } from './utils/store';
+import { activeStepAtom } from './utils/store';
 
 import classes from './create-drawing-dialog.module.scss';
 import { useReset } from './utils/use-reset';

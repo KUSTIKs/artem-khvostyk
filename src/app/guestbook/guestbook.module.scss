@@ -12,6 +12,12 @@
   margin-bottom: var(--space-sm);
 }
 
+.actions {
+  margin-top: var(--space-sm);
+  display: flex;
+  gap: var(--space-sm);
+}
+
 .content {
   margin-top: var(--space-lg);
 }
