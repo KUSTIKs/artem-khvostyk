@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAtomValue, useSetAtom } from 'jotai';
 
 import { DrawingCardPreview } from '#src/components/common/drawing-card-placeholder/drawing-card-placeholder';
@@ -13,14 +13,22 @@ import { BackButton, Counter, SubmitButton } from '../common/common';
 import classes from './preview-step-dialog.module.scss';
 
 const PreviewStepDialog = () => {
+  const queryClient = useQueryClient();
+
   const drawingUrl = useAtomValue(drawingUrlAtom);
   const drawingName = useAtomValue(drawingNameAtom);
   const { publicUser } = useUser();
-  const uploadMutation = useMutation({ mutationFn: uploadDrawing });
   const setIsOpen = useSetAtom(isOpenAtom);
 
-  if (!publicUser?.github_username) {
-    throw new Error('publicUser?.github_username must be string at this stage');
+  const uploadMutation = useMutation({
+    mutationFn: uploadDrawing,
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ['drawings'] });
+    },
+  });
+
+  if (!publicUser) {
+    throw new Error('publicUser must be non null at this stage');
   }
 
   if (drawingUrl === null || drawingName == null) {

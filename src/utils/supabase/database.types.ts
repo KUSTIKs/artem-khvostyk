@@ -11,28 +11,28 @@ export type Database = {
     Tables: {
       drawings: {
         Row: {
-          author_id: string | null
+          author_id: string
           created_at: string
           id: number
-          image_url: string | null
-          name: string | null
-          storage_path: string | null
+          image_url: string
+          name: string
+          storage_path: string
         }
         Insert: {
-          author_id?: string | null
+          author_id?: string
           created_at?: string
           id?: number
-          image_url?: string | null
-          name?: string | null
-          storage_path?: string | null
+          image_url: string
+          name: string
+          storage_path: string
         }
         Update: {
-          author_id?: string | null
+          author_id?: string
           created_at?: string
           id?: number
-          image_url?: string | null
-          name?: string | null
-          storage_path?: string | null
+          image_url?: string
+          name?: string
+          storage_path?: string
         }
         Relationships: [
           {
@@ -46,18 +46,18 @@ export type Database = {
       }
       users: {
         Row: {
-          created_at: string | null
-          github_username: string | null
+          created_at: string
+          github_username: string
           id: string
         }
         Insert: {
-          created_at?: string | null
-          github_username?: string | null
+          created_at?: string
+          github_username: string
           id: string
         }
         Update: {
-          created_at?: string | null
-          github_username?: string | null
+          created_at?: string
+          github_username?: string
           id?: string
         }
         Relationships: []

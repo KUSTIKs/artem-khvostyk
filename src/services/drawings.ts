@@ -45,4 +45,27 @@ const uploadDrawing = async ({
   }
 };
 
-export { uploadDrawing };
+const getDrawings = async () => {
+  try {
+    const supabase = createClient();
+
+    const { data: selectData, error: selectError } = await supabase
+      .from('drawings')
+      .select(
+        `
+        *,
+        author:author_id (*)
+        `
+      )
+      .order('created_at', { ascending: false });
+
+    if (selectError) throw selectError;
+
+    return { drawings: selectData };
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
+export { uploadDrawing, getDrawings };
