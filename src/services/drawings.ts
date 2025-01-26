@@ -45,19 +45,24 @@ const uploadDrawing = async ({
   }
 };
 
-const getDrawings = async () => {
+const getDrawings = async (params?: {
+  range?: { from: number; to: number };
+}) => {
   try {
     const supabase = createClient();
 
-    const { data: selectData, error: selectError } = await supabase
+    await new Promise((res) => setTimeout(res, 2000));
+
+    let query = supabase
       .from('drawings')
-      .select(
-        `
-        *,
-        author:author_id (*)
-        `
-      )
+      .select('*, author:author_id (*)')
       .order('created_at', { ascending: false });
+
+    if (params?.range) {
+      query = query.range(params.range.from, params.range.to);
+    }
+
+    const { data: selectData, error: selectError } = await query;
 
     if (selectError) throw selectError;
 

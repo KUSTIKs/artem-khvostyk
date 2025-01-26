@@ -1,35 +1,44 @@
 'use client';
 
-import { RiBrushLine } from '@remixicon/react';
-import { useQuery } from '@tanstack/react-query';
+import { RiBrushLine, RiLoader2Line } from '@remixicon/react';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { SignedIn, SignedOut } from '#src/components/auth/auth';
+import { SignedIn } from '#src/components/auth/auth';
+import { DrawingCard } from '#src/components/common/drawing-card/drawing-card';
+import { DrawingCardSkeleton } from '#src/components/common/drawing-card/drawing-card-skeleton';
 import { Button } from '#src/components/core/button/button';
 import { CreateDrawingDialog } from '#src/components/dialogs/create-drawing-dialog/create-drawing-dialog';
+import { drawingsPerPage } from '#src/constants/guestbook';
 import { getDrawings } from '#src/services/drawings';
-import { ConnectGithubAlert } from './_components/connect-github-alert/connect-github-alert';
-import { SignOutAlert } from './_components/sign-out-alert/sign-out-alert';
+import { getPaginationRange } from '#src/utils/get-pagination-range';
+import { AuthAlert } from './_components/auth-alert/auth-alert';
 
-import { DrawingCard } from '#src/components/common/drawing-card/drawing-card';
 import classes from './guestbook.module.scss';
 
 const GuestbookPage = () => {
-  const { data: drawingsData, isSuccess } = useQuery({
-    queryKey: ['drawings'],
-    queryFn: getDrawings,
-  });
+  const { data, isSuccess, isLoading, fetchNextPage, isFetching, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ['drawings'],
+      queryFn: ({ pageParam }) => {
+        return getDrawings({
+          range: getPaginationRange(pageParam, drawingsPerPage),
+        });
+      },
+      initialPageParam: 0,
+      getNextPageParam: (lastPage, _allPages, lastPageParam) => {
+        if (lastPage.drawings.length === 0) return;
+        return lastPageParam + 1;
+      },
+    });
 
-  const drawingsExist = isSuccess && drawingsData.drawings.length > 0;
+  const drawingsExist = isSuccess && data.pages[0].drawings.length > 0;
 
   return (
     <main>
       <div className={classes.container}>
         <h1 className={classes.title}>Guestbook</h1>
-        <SignedOut>
-          <ConnectGithubAlert />
-        </SignedOut>
+        <AuthAlert />
         <SignedIn>
-          <SignOutAlert />
           <div className={classes.actions}>
             <CreateDrawingDialog>
               <Button variant="outlined">
@@ -40,21 +49,48 @@ const GuestbookPage = () => {
           </div>
         </SignedIn>
         <div className={classes.content}>
-          {drawingsData?.drawings.length === 0 && (
+          {data?.pages.at(0)?.drawings.length === 0 && (
             <p className={classes.message}>No guests were here</p>
+          )}
+
+          {isLoading && (
+            <div className={classes.drawings}>
+              {[...Array(8).keys()].map((index) => (
+                <DrawingCardSkeleton key={index} />
+              ))}
+            </div>
           )}
 
           {drawingsExist && (
             <div className={classes.drawings}>
-              {drawingsData.drawings.map((drawing) => (
-                <DrawingCard
-                  key={drawing.id}
-                  author={drawing.author.github_username}
-                  title={drawing.name}
-                  date={new Date(drawing.created_at)}
-                  drawingSrc={drawing.image_url}
-                />
-              ))}
+              {data.pages.flatMap(({ drawings }) =>
+                drawings.map((drawing) => (
+                  <DrawingCard
+                    key={drawing.id}
+                    author={drawing.author.github_username}
+                    title={drawing.name}
+                    date={new Date(drawing.created_at)}
+                    drawingSrc={drawing.image_url}
+                  />
+                )),
+              )}
+            </div>
+          )}
+
+          {drawingsExist && (
+            <div className={classes.bottomContent}>
+              {hasNextPage ? (
+                <Button
+                  onClick={() => fetchNextPage()}
+                  disabled={isFetching}
+                  variant="ghost"
+                >
+                  {isFetching && <RiLoader2Line className="spin" />}
+                  Load more
+                </Button>
+              ) : (
+                <p className={classes.bottomMessage}>No more drawings</p>
+              )}
             </div>
           )}
         </div>

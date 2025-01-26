@@ -34,3 +34,17 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--space-lg) var(--space-base);
 }
+
+.bottomContent {
+  margin-top: var(--space-2xl);
+  display: flex;
+  justify-content: center;
+  min-height: var(--size-button-base);
+  align-items: center;
+}
+
+.bottomMessage {
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  color: hsl(var(--color-muted-foreground));
+}

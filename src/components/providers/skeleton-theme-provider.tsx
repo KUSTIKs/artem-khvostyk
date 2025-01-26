@@ -1,16 +1,14 @@
 import type { ReactNode } from 'react';
 import { SkeletonTheme } from 'react-loading-skeleton';
 
+import 'react-loading-skeleton/dist/skeleton.css';
+
 type Props = {
   children: ReactNode;
 };
 
 const AppSkeletonThemeProvider = ({ children }: Props) => {
-  return (
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
-      {children}
-    </SkeletonTheme>
-  );
+  return <SkeletonTheme>{children}</SkeletonTheme>;
 };
 
 export { AppSkeletonThemeProvider };

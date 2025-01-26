@@ -18,6 +18,12 @@ const SignedOut = ({ children }: { children: ReactNode }) => {
   return isLoaded && !isAuthenticated && children;
 };
 
+const AuthLoading = ({ children }: { children: ReactNode }) => {
+  const { isLoaded } = useAuth();
+
+  return !isLoaded && children;
+};
+
 const SignInButton = ({
   children,
   ...options
@@ -33,4 +39,4 @@ const SignOutButton = ({ children }: { children: ReactNode }) => {
   return <Slot onClick={signOut}>{children}</Slot>;
 };
 
-export { SignedIn, SignedOut, SignInButton, SignOutButton };
+export { SignedIn, SignedOut, AuthLoading, SignInButton, SignOutButton };
