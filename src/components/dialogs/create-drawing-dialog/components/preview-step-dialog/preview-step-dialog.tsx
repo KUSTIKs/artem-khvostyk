@@ -1,29 +1,42 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { useAtomValue } from 'jotai';
+import { useMutation } from '@tanstack/react-query';
+import { useAtomValue, useSetAtom } from 'jotai';
 
 import { DrawingCardPreview } from '#src/components/common/drawing-card-placeholder/drawing-card-placeholder';
 import { DrawingCard } from '#src/components/common/drawing-card/drawing-card';
-import { drawingNameAtom, drawingUrlAtom } from '../../utils/store';
-import {
-  BackButton,
-  ContinueButton,
-  Counter,
-  SubmitButton,
-} from '../common/common';
+import { useUser } from '#src/hooks/auth';
+import { uploadDrawing } from '#src/services/drawings';
+import { base64ToBlob } from '#src/utils/base64-to-image';
+import { drawingNameAtom, drawingUrlAtom, isOpenAtom } from '../../utils/store';
+import { BackButton, Counter, SubmitButton } from '../common/common';
 
 import classes from './preview-step-dialog.module.scss';
 
 const PreviewStepDialog = () => {
   const drawingUrl = useAtomValue(drawingUrlAtom);
   const drawingName = useAtomValue(drawingNameAtom);
+  const { publicUser } = useUser();
+  const uploadMutation = useMutation({ mutationFn: uploadDrawing });
+  const setIsOpen = useSetAtom(isOpenAtom);
 
-  const handleSubmit = () => {};
+  if (!publicUser?.github_username) {
+    throw new Error('publicUser?.github_username must be string at this stage');
+  }
 
   if (drawingUrl === null || drawingName == null) {
     throw new Error(
       'Drawing Url and Drawing Name must be non null at this step',
     );
   }
+
+  const handleSubmit = async () => {
+    const drawingBlob = await base64ToBlob(drawingUrl);
+    await uploadMutation.mutateAsync({
+      name: drawingName,
+      drawing: drawingBlob,
+    });
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -40,7 +53,7 @@ const PreviewStepDialog = () => {
           <DrawingCard
             drawingSrc={drawingUrl}
             title={drawingName}
-            author="KUSTIKs"
+            author={publicUser.github_username}
             date={new Date()}
           />
           <DrawingCardPreview />

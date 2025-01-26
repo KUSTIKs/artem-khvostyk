@@ -45,7 +45,7 @@ const ContinueButton = ({
     ...props,
     ...{
       variant: 'primary',
-      disabled: isLast || props.disabled,
+      disabled: isLast || isLoading || props.disabled,
     },
     ...(props.type !== 'submit' && {
       onClick: handleClick,
@@ -73,12 +73,11 @@ const BackButton = ({ ...props }: ButtonProps) => {
   return (
     <Button
       variant="outlined"
-      disabled={isFirst || props.disabled}
+      disabled={isFirst || isLoading || props.disabled}
       type="button"
       onClick={handleClick}
       {...props}
     >
-      {isLoading && <RiLoader2Line className="spin" />}
       Back
     </Button>
   );
@@ -101,7 +100,12 @@ const SubmitButton = ({
   };
 
   return (
-    <Button variant="primary" onClick={handleClick} {...props}>
+    <Button
+      {...props}
+      variant="primary"
+      onClick={handleClick}
+      disabled={props.disabled || isLoading}
+    >
       {isLoading && <RiLoader2Line className="spin" />}
       Create
     </Button>

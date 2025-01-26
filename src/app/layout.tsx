@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { AuthProvider } from '#src/components/auth/auth-provider';
 import { Footer } from '#src/components/common/footer/footer';
 import { Header } from '#src/components/common/header/header';
+import { AppQueryClientProvider } from '#src/components/providers/query-client-provider';
 
 import '../styles/globals.css';
 import '../styles/reset.css';
@@ -28,9 +29,11 @@ const RootLayout = ({ children }: Props) => {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Header />
-          {children}
-          <Footer />
+          <AppQueryClientProvider>
+            <Header />
+            {children}
+            <Footer />
+          </AppQueryClientProvider>
         </AuthProvider>
       </body>
     </html>

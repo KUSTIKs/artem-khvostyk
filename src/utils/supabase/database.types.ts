@@ -9,38 +9,40 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      countries: {
+      drawings: {
         Row: {
-          id: number
-          name: string
-        }
-        Insert: {
-          id?: never
-          name: string
-        }
-        Update: {
-          id?: never
-          name?: string
-        }
-        Relationships: []
-      }
-      test: {
-        Row: {
+          author_id: string | null
           created_at: string
           id: number
-          Name: string | null
+          image_url: string | null
+          name: string | null
+          storage_path: string | null
         }
         Insert: {
+          author_id?: string | null
           created_at?: string
           id?: number
-          Name?: string | null
+          image_url?: string | null
+          name?: string | null
+          storage_path?: string | null
         }
         Update: {
+          author_id?: string | null
           created_at?: string
           id?: number
-          Name?: string | null
+          image_url?: string | null
+          name?: string | null
+          storage_path?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "drawings_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       users: {
         Row: {
