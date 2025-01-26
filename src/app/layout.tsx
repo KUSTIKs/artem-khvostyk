@@ -1,8 +1,8 @@
-import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 
+import { AuthProvider } from '#src/components/auth/auth-provider';
 import { Footer } from '#src/components/common/footer/footer';
 import { Header } from '#src/components/common/header/header';
 
@@ -25,15 +25,15 @@ type Props = {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
+    <html lang="en">
+      <body className={inter.className}>
+        <AuthProvider>
           <Header />
           {children}
           <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
+        </AuthProvider>
+      </body>
+    </html>
   );
 };
 

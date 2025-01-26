@@ -1,9 +1,10 @@
+'use client';
+
 import { RiGithubFill } from '@remixicon/react';
 
+import { SignInButton } from '#src/components/auth/auth';
 import * as Alert from '#src/components/core/alert/alert';
 import { Button } from '#src/components/core/button/button';
-
-import { SignInButton } from '@clerk/nextjs';
 
 const ConnectGithubAlert = () => {
   return (
@@ -16,7 +17,7 @@ const ConnectGithubAlert = () => {
       </div>
 
       <Alert.Action>
-        <SignInButton>
+        <SignInButton redirectTo={window.location.href}>
           <Button>
             <RiGithubFill />
             Connect GitHub
