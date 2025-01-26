@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 
-import { AuthProvider } from '#src/components/auth/auth-provider';
 import { Footer } from '#src/components/common/footer/footer';
 import { Header } from '#src/components/common/header/header';
-import { AppQueryClientProvider } from '#src/components/providers/query-client-provider';
+import { AppProviders } from '#src/components/providers/app-providers';
 
 import '../styles/globals.css';
 import '../styles/reset.css';
@@ -28,13 +27,11 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <AppQueryClientProvider>
-            <Header />
-            {children}
-            <Footer />
-          </AppQueryClientProvider>
-        </AuthProvider>
+        <AppProviders>
+          <Header />
+          {children}
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

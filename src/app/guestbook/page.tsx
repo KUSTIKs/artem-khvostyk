@@ -19,8 +19,6 @@ const GuestbookPage = () => {
     queryFn: getDrawings,
   });
 
-  console.log({ drawingsData });
-
   const drawingsExist = isSuccess && drawingsData.drawings.length > 0;
 
   return (

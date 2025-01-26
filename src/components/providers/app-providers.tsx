@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import { AppAuthProvider } from './app-auth-provider';
 import { AppQueryClientProvider } from './query-client-provider';
 import { AppSkeletonThemeProvider } from './skeleton-theme-provider';
 
@@ -9,9 +10,11 @@ type Props = {
 
 const AppProviders = ({ children }: Props) => {
   return (
-    <AppQueryClientProvider>
-      <AppSkeletonThemeProvider>{children}</AppSkeletonThemeProvider>
-    </AppQueryClientProvider>
+    <AppAuthProvider>
+      <AppQueryClientProvider>
+        <AppSkeletonThemeProvider>{children}</AppSkeletonThemeProvider>
+      </AppQueryClientProvider>
+    </AppAuthProvider>
   );
 };
 

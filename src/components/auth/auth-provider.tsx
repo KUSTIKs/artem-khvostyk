@@ -1,12 +1,9 @@
 'use client';
 
-import type {
-  Session,
-  SignInWithOAuthCredentials,
-  User,
-} from '@supabase/supabase-js';
+import type { User } from '@supabase/supabase-js';
 import { type ReactNode, useEffect, useMemo, useState } from 'react';
 
+import { signIn, signOut } from '#src/services/auth';
 import {
   AuthContext,
   type AuthContextState,
@@ -18,57 +15,34 @@ import type { Tables } from '#src/utils/supabase/database.types';
 
 type Props = {
   children: ReactNode;
+  initialUser: User | null;
+  initialPublicUser: Tables<'users'> | null;
 };
 
-const AuthProvider = ({ children }: Props) => {
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
-  const [publicUser, setPublicUser] = useState<Tables<'users'> | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+const AuthProvider = ({ children, initialUser, initialPublicUser }: Props) => {
+  const [user, setUser] = useState(initialUser);
+  const [publicUser, setPublicUser] = useState(initialPublicUser);
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  const isAuthenticated = user && publicUser && isLoaded;
 
   const supabase = useMemo(() => createClient(), []);
 
-  const signIn = async (options?: SignInWithOAuthCredentials['options']) => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options,
-    });
-  };
-
-  const signOut = async () => {
-    await supabase.auth.signOut();
-  };
-
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'INITIAL_SESSION') return;
+      if (event === 'SIGNED_IN' && isAuthenticated) return;
+
       setIsLoaded(false);
-      setSession(data.session);
-      setUser(data.session?.user ?? null);
 
-      if (data.session?.user) {
-        supabase
-          .from('users')
-          .select('*')
-          .eq('id', data.session?.user.id)
-          .single()
-          .then(({ data }) => setPublicUser(data))
-          .then(() => setIsLoaded(true));
-      } else {
-        setIsLoaded(true);
-      }
-    });
+      supabase.auth.getUser().then(({ data: { user } }) => {
+        setUser(user);
 
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setIsLoaded(false);
-        setSession(session);
-        setUser(session?.user ?? null);
-
-        if (session?.user) {
+        if (user) {
           supabase
             .from('users')
             .select('*')
-            .eq('id', session.user.id)
+            .eq('id', user.id)
             .single()
             .then(({ data }) => setPublicUser(data))
             .then(() => setIsLoaded(true));
@@ -76,13 +50,13 @@ const AuthProvider = ({ children }: Props) => {
           setPublicUser(null);
           setIsLoaded(true);
         }
-      },
-    );
+      });
+    });
 
     return () => authListener.subscription.unsubscribe();
-  }, [supabase]);
+  }, [supabase, isAuthenticated]);
 
-  if (session && user && publicUser && isLoaded) {
+  if (isAuthenticated) {
     const authContextState: AuthContextState = {
       isLoaded: true,
       isAuthenticated: true,
