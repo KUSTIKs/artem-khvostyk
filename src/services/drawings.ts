@@ -51,8 +51,6 @@ const getDrawings = async (params?: {
   try {
     const supabase = createClient();
 
-    await new Promise((res) => setTimeout(res, 2000));
-
     let query = supabase
       .from('drawings')
       .select('*, author:author_id (*)')
