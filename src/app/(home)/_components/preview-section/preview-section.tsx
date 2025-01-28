@@ -15,10 +15,7 @@ const PreviewSection = ({ highlights, mainVideo }: Props) => {
             key={highlight._id}
             title={`${highlight.title} - ${highlight.description}`}
             topic="project"
-            imageSrc={
-              highlight.thumbnail &&
-              sanityImageUrlBuilder.image(highlight.thumbnail).url()
-            }
+            imageSrc={sanityImageUrlBuilder.image(highlight.thumbnail).url()}
             href={`/projects/${highlight.slug}`}
           />
         ))}

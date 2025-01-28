@@ -85,3 +85,8 @@ a {
     transform: rotate(360deg);
   }
 }
+
+::selection {
+  background: hsl(var(--color-blue) / 15%);
+  color: hsl(var(--color-blue));
+}

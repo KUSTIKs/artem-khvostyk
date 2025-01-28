@@ -14,13 +14,13 @@
 .title {
   font-size: var(--fz-2xl);
   line-height: var(--lh-2xl);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-xs);
 }
 
 .description {
-  font-size: var(--fz-base);
-  line-height: var(--lh-base);
+  font-size: var(--fz-lg);
+  line-height: var(--lh-lg);
   color: hsl(var(--color-muted-foreground));
   margin-bottom: var(--space-sm);
 }

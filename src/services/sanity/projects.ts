@@ -16,10 +16,29 @@ const getProject = async (params: { slug: string }) => {
     content
   }`;
 
-  const homePageContent = await sanityClient.fetch<Project>(query, {
+  const project = await sanityClient.fetch<Project>(query, {
     slug: params.slug,
   });
-  return homePageContent;
+  return project;
 };
 
-export { getProject };
+const getProjects = async () => {
+  const query = `*[_type == "project"]{
+    _id,
+    title,
+    description,
+    'slug': slug.current,
+    tags[]->{
+      _id,
+      name,
+      'value': value.current,
+    },
+    thumbnail,
+    content
+  }`;
+
+  const projects = await sanityClient.fetch<Project[]>(query);
+  return projects;
+};
+
+export { getProject, getProjects };
