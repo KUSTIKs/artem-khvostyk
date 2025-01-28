@@ -1,10 +1,17 @@
-import type { Image, Slug } from '@sanity/types';
+import type { Image } from '@sanity/types';
+
+type ProjectTag = {
+  _id: string;
+  name: string;
+  value: string;
+};
 
 type Project = {
   _id: string;
   title: string;
   description: string;
-  slug: Slug;
+  slug: string;
+  tags: Pick<ProjectTag, '_id' | 'name' | 'value'>[];
   thumbnail: Image;
 };
 
@@ -17,8 +24,8 @@ type HomePageContent = {
   mainVideo: { url: string };
   selectedWork: Pick<
     Project,
-    '_id' | 'title' | 'description' | 'thumbnail' | 'slug'
+    '_id' | 'title' | 'description' | 'thumbnail' | 'slug' | 'tags'
   >[];
 };
 
-export type { HomePageContent };
+export type { HomePageContent, Project, ProjectTag };

@@ -16,9 +16,9 @@ const SelectedWorkSection = ({ selectedWork }: Props) => {
             <ProjectCard
               title={project.title}
               description={project.description}
-              services={['Development']}
+              tags={project.tags}
               imageSrcs={[sanityImageUrlBuilder.image(project.thumbnail).url()]}
-              href={`/projects/${project.slug.current}`}
+              href={`/projects/${project.slug}`}
             />
           </li>
         ))}

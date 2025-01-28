@@ -2,8 +2,7 @@ import { RiArrowRightLine } from '@remixicon/react';
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
-import { type ServiceType, serviceIcons } from '#src/constants/services';
-import { ServiceItem } from './components/service-item/service-item';
+import { Tag } from './components/tag/tag';
 
 import classes from './project-card.module.scss';
 
@@ -11,26 +10,20 @@ type Props = {
   title: string;
   description: string;
   imageSrcs: string[];
-  services: ServiceType[];
+  tags: { name: string; value: string }[];
   href?: string;
 };
 
-const ProjectCard = ({
-  title,
-  description,
-  imageSrcs,
-  services,
-  href,
-}: Props) => {
+const ProjectCard = ({ title, description, imageSrcs, tags, href }: Props) => {
   return (
     <article className={classes.card}>
       <div className={classes.content}>
         <h3 className={classes.title}>{title}</h3>
         <p className={classes.description}>{description}</p>
         <ul className={classes.services}>
-          {services.map((service) => (
-            <li key={service}>
-              <ServiceItem icon={serviceIcons[service]} name={service} />
+          {tags.map((tag) => (
+            <li key={tag.value}>
+              <Tag name={tag.name} value={tag.value} />
             </li>
           ))}
         </ul>

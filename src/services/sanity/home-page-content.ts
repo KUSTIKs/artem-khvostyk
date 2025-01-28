@@ -7,17 +7,22 @@ const getHomePageContent = async () => {
     highlights[]->{
       _id,
       title,
-      slug,
+      'slug': slug.current,
       description,
       thumbnail
     },
-    mainVideo{ 'url':asset->url },
+    mainVideo{ 'url': asset->url },
     selectedWork[]->{
       _id,
       title,
-      slug,
+      'slug': slug.current,
       description,
-      thumbnail
+      thumbnail,
+      tags[]->{
+        _id,
+        name,
+        'value': value.current,
+      }
     }
   }`;
 
