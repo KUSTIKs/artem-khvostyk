@@ -6,8 +6,8 @@ import type { Database } from './database.types';
 
 const createClient = (cookieStore: Awaited<ReturnType<typeof cookies>>) => {
   return createServerClient<Database>(
-    envConfig.SupabaseUrl,
-    envConfig.SupabaseAnonKey,
+    envConfig.supabaseUrl,
+    envConfig.supabaseAnonKey,
     {
       cookies: {
         getAll() {
@@ -25,7 +25,7 @@ const createClient = (cookieStore: Awaited<ReturnType<typeof cookies>>) => {
           }
         },
       },
-    }
+    },
   );
 };
 

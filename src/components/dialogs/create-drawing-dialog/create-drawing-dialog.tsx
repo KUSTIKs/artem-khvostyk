@@ -5,9 +5,9 @@ import { useAtom, useAtomValue } from 'jotai';
 import type { ReactNode } from 'react';
 
 import { activeStepAtom, isOpenAtom } from './utils/store';
+import { useReset } from './utils/use-reset';
 
 import classes from './create-drawing-dialog.module.scss';
-import { useReset } from './utils/use-reset';
 
 type Props = {
   children: ReactNode;

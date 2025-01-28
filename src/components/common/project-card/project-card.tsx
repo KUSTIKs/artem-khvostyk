@@ -12,9 +12,16 @@ type Props = {
   description: string;
   imageSrcs: string[];
   services: ServiceType[];
+  href?: string;
 };
 
-const ProjectCard = ({ title, description, imageSrcs, services }: Props) => {
+const ProjectCard = ({
+  title,
+  description,
+  imageSrcs,
+  services,
+  href,
+}: Props) => {
   return (
     <article className={classes.card}>
       <div className={classes.content}>
@@ -27,11 +34,13 @@ const ProjectCard = ({ title, description, imageSrcs, services }: Props) => {
             </li>
           ))}
         </ul>
-        <Button variant="outlined" className={classes.button} asChild>
-          <Link href="/">
-            Read more <RiArrowRightLine />
-          </Link>
-        </Button>
+        {href && (
+          <Button variant="outlined" className={classes.button} asChild>
+            <Link href={href}>
+              Read more <RiArrowRightLine />
+            </Link>
+          </Button>
+        )}
       </div>
       {imageSrcs.length > 0 && (
         <img src={imageSrcs.at(0)} alt="preview" className={classes.image} />

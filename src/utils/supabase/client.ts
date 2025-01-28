@@ -5,8 +5,8 @@ import type { Database } from './database.types';
 
 const createClient = () => {
   return createBrowserClient<Database>(
-    envConfig.SupabaseUrl,
-    envConfig.SupabaseAnonKey
+    envConfig.supabaseUrl,
+    envConfig.supabaseAnonKey,
   );
 };
 

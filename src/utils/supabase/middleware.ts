@@ -11,7 +11,7 @@ const updateSession = (request: NextRequest) => {
     },
   });
 
-  createServerClient(envConfig.SupabaseUrl, envConfig.SupabaseAnonKey, {
+  createServerClient(envConfig.supabaseUrl, envConfig.supabaseAnonKey, {
     cookies: {
       getAll() {
         return request.cookies.getAll();

@@ -1,5 +1,7 @@
 .card {
-  box-shadow: 0 1px hsl(var(--color-border)), 0 -1px hsl(var(--color-border));
+  box-shadow:
+    0 1px hsl(var(--color-border)),
+    0 -1px hsl(var(--color-border));
   background-color: hsl(var(--color-background));
   padding-block: var(--space-lg);
 }
@@ -39,4 +41,5 @@
   aspect-ratio: 16/9;
   background-color: hsl(var(--color-muted));
   border-radius: var(--radius);
+  object-fit: cover;
 }
