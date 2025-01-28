@@ -17,14 +17,11 @@
   max-width: var(--container-text);
   padding: var(--space-base);
   margin: 0 auto;
+  margin-bottom: var(--space-xl);
 }
 
 .separator {
   margin-block: var(--space-xl);
-}
-
-.content {
-  margin-bottom: var(--space-xl);
 }
 
 .title {

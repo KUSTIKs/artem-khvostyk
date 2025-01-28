@@ -1,15 +1,15 @@
-import { RiGithubFill, RiGlobalLine } from '@remixicon/react';
-import clsx from 'clsx';
+import Link from 'next/link';
 
 import { Tag } from '#src/components/common/tag/tag';
 import { Button } from '#src/components/core/button/button';
 import { Separator } from '#src/components/core/separator/separator';
-import { tagIconsMap } from '#src/constants/tag-icons';
+import { resourceIconsMap, tagIconsMap } from '#src/constants/icons';
 
+import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 import { getProject } from '#src/services/sanity/projects';
 import { sanityImageUrlBuilder } from '#src/utils/sanity';
+
 import classes from './project.module.scss';
-import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 
 type Props = {
   params: Promise<{
@@ -30,10 +30,12 @@ const ProjectPage = async ({ params }: Props) => {
           className={classes.thumbnail}
         />
       </div>
+
       <div className={classes.container}>
         <section>
           <h1 className={classes.title}>{project.title}</h1>
           <p className={classes.description}>{project.description}</p>
+
           <p className={classes.caption}>Tags:</p>
           <ul className={classes.tags}>
             {project.tags.map((tag) => (
@@ -42,26 +44,37 @@ const ProjectPage = async ({ params }: Props) => {
               </li>
             ))}
           </ul>
-          <p className={classes.caption}>Links:</p>
-          <ul className={classes.links}>
-            <li>
-              <Button variant="outlined">
-                <RiGlobalLine />
-                Website
-              </Button>
-            </li>
-            <li>
-              <Button variant="outlined">
-                <RiGithubFill />
-                GitHub Repo
-              </Button>
-            </li>
-          </ul>
+
+          {project.links && (
+            <>
+              <p className={classes.caption}>Links:</p>
+              <ul className={classes.links}>
+                {project.links.map((link) => {
+                  const Icon = resourceIconsMap[link.resource];
+
+                  return (
+                    <li key={link._key}>
+                      <Button variant="outlined" asChild>
+                        <Link href={link.href}>
+                          {Icon && <Icon />}
+                          {link.label}
+                        </Link>
+                      </Button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
         </section>
-        <Separator className={classes.separator} />
-        <section className={classes.content}>
-          <StyledPortableText value={project.content} />
-        </section>
+        {project.content && (
+          <>
+            <Separator className={classes.separator} />
+            <section>
+              <StyledPortableText value={project.content} />
+            </section>
+          </>
+        )}
       </div>
     </main>
   );

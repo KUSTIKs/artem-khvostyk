@@ -7,14 +7,22 @@ type ProjectTag = {
   value: string;
 };
 
+type ProjectLink = {
+  _key: string;
+  label: string;
+  href: string;
+  resource: string;
+};
+
 type Project = {
   _id: string;
   title: string;
   description: string;
   slug: string;
-  tags: Pick<ProjectTag, '_id' | 'name' | 'value'>[];
+  tags: ProjectTag[];
+  links: ProjectLink[] | null;
   thumbnail: Image;
-  content: PortableTextBlock;
+  content: PortableTextBlock | null;
 };
 
 type HomePageContent = {

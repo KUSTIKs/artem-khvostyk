@@ -12,6 +12,12 @@ const getProject = async (params: { slug: string }) => {
       name,
       'value': value.current,
     },
+    links[]{
+      _key,
+      label,
+      href,
+      resource,
+    },
     thumbnail,
     content
   }`;

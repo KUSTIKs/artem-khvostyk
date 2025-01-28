@@ -2,7 +2,7 @@ import { RiArrowRightLine } from '@remixicon/react';
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
-import { tagIconsMap } from '#src/constants/tag-icons';
+import { tagIconsMap } from '#src/constants/icons';
 import { Tag } from '../tag/tag';
 
 import classes from './project-card.module.scss';
