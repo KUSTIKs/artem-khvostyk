@@ -1,4 +1,4 @@
-import type { Image } from '@sanity/types';
+import type { Image, BlockDefinition } from '@sanity/types';
 
 type ProjectTag = {
   _id: string;

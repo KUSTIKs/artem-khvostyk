@@ -2,7 +2,8 @@ import { RiArrowRightLine } from '@remixicon/react';
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
-import { Tag } from './components/tag/tag';
+import { tagIconsMap } from '#src/constants/tag-icons';
+import { Tag } from '../tag/tag';
 
 import classes from './project-card.module.scss';
 
@@ -23,7 +24,7 @@ const ProjectCard = ({ title, description, imageSrcs, tags, href }: Props) => {
         <ul className={classes.services}>
           {tags.map((tag) => (
             <li key={tag.value}>
-              <Tag name={tag.name} value={tag.value} />
+              <Tag name={tag.name} icon={tagIconsMap[tag.value]} />
             </li>
           ))}
         </ul>

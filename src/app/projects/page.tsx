@@ -21,7 +21,11 @@ const ProjectsPage = () => {
             <ProjectCard
               title="SnapLink"
               description="SnapLink makes it effortless to share files, links, and documents across multiple devices. With a user-friendly interface, you can quickly send and receive content without the hassle of complicated setups."
-              services={['Design', 'Development']}
+              tags={[
+                { name: 'Design', value: 'design' },
+                { name: 'Development', value: 'development' },
+              ]}
+              href="/"
               imageSrcs={[
                 'https://cuberto.com/assets/projects/flipaclip/screenshot/5.jpg',
               ]}
@@ -31,7 +35,11 @@ const ProjectsPage = () => {
             <ProjectCard
               title="Mayme Lindsey"
               description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est, sequi perferendis! Perspiciatis officiis fugit, quibusdam natus ab sint autem eos vero consectetur reprehenderit neque quia illo dolor beatae error. Magni."
-              services={['Development']}
+              tags={[
+                { name: 'Design', value: 'design' },
+                { name: 'Development', value: 'development' },
+              ]}
+              href="/"
               imageSrcs={[
                 'https://cuberto.com/assets/projects/kzero/screenshot/2.jpg',
               ]}
