@@ -1,4 +1,5 @@
-import type { Image, BlockDefinition } from '@sanity/types';
+import type { PortableTextBlock } from '@portabletext/react';
+import type { Image } from '@sanity/types';
 
 type ProjectTag = {
   _id: string;
@@ -13,6 +14,7 @@ type Project = {
   slug: string;
   tags: Pick<ProjectTag, '_id' | 'name' | 'value'>[];
   thumbnail: Image;
+  content: PortableTextBlock;
 };
 
 type HomePageContent = {
