@@ -8,17 +8,14 @@
 .title {
   font-size: var(--fz-3xl);
   line-height: var(--lh-3xl);
-  font-weight: 700;
   margin-bottom: var(--space-base);
+  font-weight: 700;
 }
 
 .content {
-  font-size: var(--fz-lg);
-  line-height: var(--lh-lg);
   margin-bottom: var(--space-base);
-
-  p {
-    margin-block: var(--space-xs);
+  :first-child {
+    margin-top: 0;
   }
 }
 

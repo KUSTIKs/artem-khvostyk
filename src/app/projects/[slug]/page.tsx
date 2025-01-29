@@ -1,11 +1,10 @@
 import Link from 'next/link';
 
+import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 import { Tag } from '#src/components/common/tag/tag';
 import { Button } from '#src/components/core/button/button';
 import { Separator } from '#src/components/core/separator/separator';
 import { resourceIconsMap, tagIconsMap } from '#src/constants/icons';
-
-import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 import { getProject } from '#src/services/sanity/projects';
 import { sanityImageUrlBuilder } from '#src/utils/sanity';
 
@@ -67,6 +66,7 @@ const ProjectPage = async ({ params }: Props) => {
             </>
           )}
         </section>
+
         {project.content && (
           <>
             <Separator className={classes.separator} />

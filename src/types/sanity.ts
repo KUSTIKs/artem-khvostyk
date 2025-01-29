@@ -38,4 +38,8 @@ type HomePageContent = {
   >[];
 };
 
-export type { HomePageContent, Project, ProjectTag };
+type AboutPageContent = {
+  content: PortableTextBlock;
+};
+
+export type { HomePageContent, Project, ProjectTag, AboutPageContent };
