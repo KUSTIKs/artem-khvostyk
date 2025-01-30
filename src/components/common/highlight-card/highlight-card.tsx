@@ -1,18 +1,31 @@
-import Image from 'next/image';
 import Link from 'next/link';
+
+import type { MediaFileSchema } from '#src/types/sanity';
+import { MediaFile } from '#src/components/core/media-file/media-file';
+
 import classes from './highlight-card.module.scss';
 
 type Props = {
   title: string;
   topic: string;
   href: string;
-  imageSrc: string;
+  preview?: MediaFileSchema | null;
 };
 
-const HighlightCard = ({ title, topic, href, imageSrc }: Props) => {
+const HighlightCard = ({ title, topic, href, preview }: Props) => {
   return (
     <Link href={href} className={classes.wrapper}>
-      <img src={imageSrc} alt={`${title} preview`} className={classes.image} />
+      {preview && (
+        <MediaFile
+          file={preview}
+          className={classes.preview}
+          videoProps={{
+            muted: true,
+            autoPlay: true,
+            loop: true,
+          }}
+        />
+      )}
       <div className={classes.content}>
         <p className={classes.title}>{title}</p>
         <p className={classes.topic}>{topic}</p>

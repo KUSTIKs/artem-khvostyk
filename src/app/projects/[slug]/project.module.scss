@@ -1,15 +1,16 @@
-.thumbnailContainer {
+.previewContainer {
   width: 100%;
   max-width: var(--container-base);
   padding: var(--space-base);
   margin: 0 auto;
 }
 
-.thumbnail {
+.preview {
   border-radius: var(--radius);
   object-fit: cover;
   aspect-ratio: 16 / 9;
   width: 100%;
+  box-shadow: 0 0 0 1px hsl(var(--color-border));
 }
 
 .container {

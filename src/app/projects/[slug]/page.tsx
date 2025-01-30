@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 import { Tag } from '#src/components/common/tag/tag';
 import { Button } from '#src/components/core/button/button';
+import { MediaFile } from '#src/components/core/media-file/media-file';
 import { Separator } from '#src/components/core/separator/separator';
 import { resourceIconsMap, tagIconsMap } from '#src/constants/icons';
 import { getProject } from '#src/services/sanity/projects';
-import { sanityImageUrlBuilder } from '#src/utils/sanity';
 
 import classes from './project.module.scss';
 
@@ -22,13 +22,20 @@ const ProjectPage = async ({ params }: Props) => {
 
   return (
     <main>
-      <div className={classes.thumbnailContainer}>
-        <img
-          src={sanityImageUrlBuilder.image(project.thumbnail).url()}
-          alt="thumbnail"
-          className={classes.thumbnail}
-        />
-      </div>
+      {project.preview && (
+        <div className={classes.previewContainer}>
+          <MediaFile
+            file={project.preview}
+            className={classes.preview}
+            videoProps={{
+              muted: true,
+              autoPlay: true,
+              controls: true,
+              loop: true,
+            }}
+          />
+        </div>
+      )}
 
       <div className={classes.container}>
         <section>

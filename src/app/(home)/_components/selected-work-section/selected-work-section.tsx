@@ -1,10 +1,9 @@
 import { ProjectCard } from '#src/components/common/project-card/project-card';
-import type { HomePageContent } from '#src/types/sanity';
-import { sanityImageUrlBuilder } from '#src/utils/sanity';
+import type { HomePageContentSchema } from '#src/types/sanity';
 
 import classes from './selected-work-section.module.scss';
 
-type Props = Pick<HomePageContent, 'selectedWork'>;
+type Props = Pick<HomePageContentSchema, 'selectedWork'>;
 
 const SelectedWorkSection = ({ selectedWork }: Props) => {
   return (
@@ -17,8 +16,8 @@ const SelectedWorkSection = ({ selectedWork }: Props) => {
               title={project.title}
               description={project.description}
               tags={project.tags}
-              imageSrcs={[sanityImageUrlBuilder.image(project.thumbnail).url()]}
               href={`/projects/${project.slug}`}
+              preview={project.preview}
             />
           </li>
         ))}

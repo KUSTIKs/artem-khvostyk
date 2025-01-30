@@ -1,10 +1,9 @@
 import { HighlightCard } from '#src/components/common/highlight-card/highlight-card';
-import type { HomePageContent } from '#src/types/sanity';
+import type { HomePageContentSchema } from '#src/types/sanity';
 
-import { sanityImageUrlBuilder } from '#src/utils/sanity';
 import classes from './preview-section.module.scss';
 
-type Props = Pick<HomePageContent, 'highlights' | 'mainVideo'>;
+type Props = Pick<HomePageContentSchema, 'highlights' | 'mainVideo'>;
 
 const PreviewSection = ({ highlights, mainVideo }: Props) => {
   return (
@@ -15,7 +14,7 @@ const PreviewSection = ({ highlights, mainVideo }: Props) => {
             key={highlight._id}
             title={`${highlight.title} - ${highlight.description}`}
             topic="project"
-            imageSrc={sanityImageUrlBuilder.image(highlight.thumbnail).url()}
+            preview={highlight.preview}
             href={`/projects/${highlight.slug}`}
           />
         ))}

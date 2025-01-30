@@ -28,9 +28,8 @@ const ProjectsPage = async () => {
                 description={project.description}
                 tags={project.tags}
                 href={`/projects/${project.slug}`}
-                imageSrcs={[
-                  sanityImageUrlBuilder.image(project.thumbnail).url(),
-                ]}
+                preview={project.preview}
+                isCompact
               />
             </li>
           ))}

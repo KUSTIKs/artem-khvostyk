@@ -32,11 +32,13 @@
   margin-top: var(--space-base);
 }
 
-.image {
+.mediaFile {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: var(--radius);
   display: block;
   width: 100%;
   margin-top: var(--space-xl);
+  background-color: hsl(var(--color-muted));
+  box-shadow: 0 0 0 1px hsl(var(--color-border));
 }

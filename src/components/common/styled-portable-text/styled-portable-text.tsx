@@ -5,7 +5,8 @@ import {
 import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 
-import { sanityImageUrlBuilder } from '#src/utils/sanity';
+import { MediaFile } from '#src/components/core/media-file/media-file';
+import type { MediaFileSchema } from '#src/types/sanity';
 
 import classes from './styled-portable-text.module.scss';
 
@@ -23,11 +24,16 @@ const components: Partial<PortableTextReactComponents> = {
     normal: ({ children }) => <p className={classes.parapraph}>{children}</p>,
   },
   types: {
-    image: ({ value }) => (
-      <img
-        src={sanityImageUrlBuilder.image(value).url()}
-        className={classes.image}
-        alt="content"
+    mediaFile: ({ value }: { value: MediaFileSchema }) => (
+      <MediaFile
+        file={value}
+        className={classes.mediaFile}
+        videoProps={{
+          muted: true,
+          autoPlay: true,
+          controls: true,
+          loop: true,
+        }}
       />
     ),
   },

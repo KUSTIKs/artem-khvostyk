@@ -1,11 +1,14 @@
 @use '#src/styles/mixins.scss' as mixins;
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
   gap: var(--space-xs);
   isolation: isolate;
   position: relative;
+
+  &:has(.preview) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
 
   &::before {
     content: '';
@@ -27,8 +30,8 @@
   margin: var(--space-2xs);
 }
 
-.image {
-  aspect-ratio: 4/3;
+.preview {
+  aspect-ratio: 4 / 3;
   background-color: hsl(var(--color-muted));
   border-radius: var(--radius);
   height: 100%;

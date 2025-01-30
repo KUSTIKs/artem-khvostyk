@@ -1,4 +1,4 @@
-import type { Project } from '#src/types/sanity';
+import type { ProjectSchema } from '#src/types/sanity';
 import { sanityClient } from '#src/utils/sanity';
 
 const getProject = async (params: { slug: string }) => {
@@ -18,11 +18,41 @@ const getProject = async (params: { slug: string }) => {
       href,
       resource,
     },
-    thumbnail,
-    content
+    preview {
+      type,
+      image {
+        'src': asset->url,
+        alt
+      },
+      video {
+        'src': asset->url,
+        alt,
+        thumbnail {
+          'src': asset->url
+        }
+      }
+    },
+    content[] {
+      _type == 'block' => @,
+      _type == 'mediaFile' => {
+        _type,
+        type,
+        image {
+          "src": asset->url,
+          alt
+        },
+        video {
+          "src": asset->url,
+          thumbnail {
+            "src": asset->url
+          },
+          alt
+        }
+      }
+    },
   }`;
 
-  const project = await sanityClient.fetch<Project>(query, {
+  const project = await sanityClient.fetch<ProjectSchema>(query, {
     slug: params.slug,
   });
   return project;
@@ -39,11 +69,23 @@ const getProjects = async () => {
       name,
       'value': value.current,
     },
-    thumbnail,
-    content
+    preview {
+      type,
+      image {
+        'src': asset->url,
+        alt
+      },
+      video {
+        'src': asset->url,
+        alt,
+        thumbnail {
+          'src': asset->url
+        }
+      }
+    },
   }`;
 
-  const projects = await sanityClient.fetch<Project[]>(query);
+  const projects = await sanityClient.fetch<ProjectSchema[]>(query);
   return projects;
 };
 
