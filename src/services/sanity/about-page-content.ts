@@ -1,4 +1,4 @@
-import type { AboutPageContent } from '#src/types/sanity';
+import type { AboutPageContentSchema } from '#src/types/sanity';
 import { sanityClient } from '#src/utils/sanity';
 
 const getAboutPageContent = async () => {
@@ -6,7 +6,8 @@ const getAboutPageContent = async () => {
     content
   }`;
 
-  const aboutPageContent = await sanityClient.fetch<AboutPageContent>(query);
+  const aboutPageContent =
+    await sanityClient.fetch<AboutPageContentSchema>(query);
   return aboutPageContent;
 };
 

@@ -7,7 +7,10 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["./src/styles/reset.css"]
+    "ignore": [
+      "./src/styles/reset.css",
+      "./src/utils/supabase/database.types.ts"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -19,7 +22,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "correctness": {
+        "noUnusedImports": "warn"
+      }
     }
   },
   "javascript": {

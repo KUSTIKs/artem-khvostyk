@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import type { MediaFileSchema } from '#src/types/sanity';
 import { MediaFile } from '#src/components/core/media-file/media-file';
+import type { MediaFileSchema } from '#src/types/sanity';
 
 import classes from './highlight-card.module.scss';
 

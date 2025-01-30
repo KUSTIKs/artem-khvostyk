@@ -1,9 +1,5 @@
-import { RiEqualizerLine } from '@remixicon/react';
-
 import { ProjectCard } from '#src/components/common/project-card/project-card';
-import { Button } from '#src/components/core/button/button';
 import { getProjects } from '#src/services/sanity/projects';
-import { sanityImageUrlBuilder } from '#src/utils/sanity';
 
 import classes from './projects.module.scss';
 
