@@ -14,10 +14,9 @@
     content: '';
     z-index: -1;
     position: absolute;
-    background-color: transparent;
-    padding: var(--space-2xs);
-    inset: calc(-1 * var(--space-2xs));
-    border-radius: calc(var(--radius) + var(--space-2xs));
+    background: transparent;
+    inset: calc(-1 * (var(--space-2xs) + 2px));
+    border-radius: calc(var(--radius) + var(--space-2xs) + 2px);
     transition: background-color 200ms ease;
   }
 

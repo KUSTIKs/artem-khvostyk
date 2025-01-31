@@ -3,13 +3,14 @@
 .video {
   border-radius: var(--radius);
   background-color: hsl(var(--color-muted));
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
   width: 100%;
+  object-fit: cover;
 }
 
 .highlights {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: var(--space-base);
-  margin-bottom: var(--space-base);
+  margin-bottom: var(--space-lg);
 }

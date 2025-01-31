@@ -60,6 +60,7 @@ body {
   font-family: var(--font-inter, "inter"), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: default;
 }
 
 * {

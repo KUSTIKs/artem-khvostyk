@@ -21,8 +21,7 @@ const HighlightCard = ({ title, topic, href, preview }: Props) => {
           className={classes.preview}
           videoProps={{
             muted: true,
-            autoPlay: true,
-            loop: true,
+            controls: false,
           }}
         />
       )}

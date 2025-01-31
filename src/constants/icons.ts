@@ -6,6 +6,11 @@ const tagIconsMap: { [key: string]: icons.RemixiconComponentType } = {
   react: icons.RiReactjsLine,
   'next-js': icons.RiNextjsLine,
   'node-js': icons.RiNodejsLine,
+  firebase: icons.RiFirebaseLine,
+  'chart-js': icons.RiLineChartLine,
+  storybook: icons.RiBookletLine,
+  teamwork: icons.RiTeamLine,
+  convex: icons.RiDatabase2Line,
 };
 
 const resourceIconsMap: { [key: string]: icons.RemixiconComponentType } = {
