@@ -3,6 +3,7 @@
 .video {
   border-radius: var(--radius);
   background-color: hsl(var(--color-muted));
+  box-shadow: 0 0 0 1px hsl(var(--color-border));
   aspect-ratio: 16 / 9;
   width: 100%;
   object-fit: cover;
