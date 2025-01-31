@@ -13,7 +13,7 @@ const getDrawingsQueryOptions = infiniteQueryOptions({
   },
   initialPageParam: 0,
   getNextPageParam: (lastPage, _allPages, lastPageParam) => {
-    if (lastPage.drawings.length === 0) return;
+    if (lastPage.drawings.length < drawingsPerPage) return;
     return lastPageParam + 1;
   },
 });

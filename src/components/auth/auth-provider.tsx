@@ -17,14 +17,22 @@ type Props = {
   children: ReactNode;
   initialUser: User | null;
   initialPublicUser: Tables<'users'> | null;
+  initialRemainingDays: number | null;
 };
 
-const AuthProvider = ({ children, initialUser, initialPublicUser }: Props) => {
+const AuthProvider = ({
+  children,
+  initialUser,
+  initialPublicUser,
+  initialRemainingDays,
+}: Props) => {
   const [user, setUser] = useState(initialUser);
   const [publicUser, setPublicUser] = useState(initialPublicUser);
   const [isLoaded, setIsLoaded] = useState(true);
+  const [remainingDays, setRemainingDays] = useState(initialRemainingDays);
 
-  const isAuthenticated = user && publicUser && isLoaded;
+  const isAuthenticated =
+    user && publicUser && isLoaded && remainingDays !== null;
 
   const supabase = useMemo(() => createClient(), []);
 
@@ -39,13 +47,17 @@ const AuthProvider = ({ children, initialUser, initialPublicUser }: Props) => {
         setUser(user);
 
         if (user) {
-          supabase
-            .from('users')
-            .select('*')
-            .eq('id', user.id)
-            .single()
-            .then(({ data }) => setPublicUser(data))
-            .then(() => setIsLoaded(true));
+          Promise.all([
+            supabase
+              .from('users')
+              .select('*')
+              .eq('id', user.id)
+              .single()
+              .then(({ data }) => setPublicUser(data)),
+            supabase
+              .rpc('calculate_days_until_new_drawing', { user_id: user.id })
+              .then(({ data }) => setRemainingDays(data)),
+          ]).finally(() => setIsLoaded(true));
         } else {
           setPublicUser(null);
           setIsLoaded(true);
@@ -69,6 +81,7 @@ const AuthProvider = ({ children, initialUser, initialPublicUser }: Props) => {
       isAuthenticated: true,
       user,
       publicUser,
+      remainingDays,
     };
 
     return (
@@ -92,6 +105,7 @@ const AuthProvider = ({ children, initialUser, initialPublicUser }: Props) => {
     isAuthenticated: false,
     user: null,
     publicUser: null,
+    remainingDays: null,
   };
 
   return (

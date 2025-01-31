@@ -1,7 +1,7 @@
 'use client';
 
 import { RiGithubFill } from '@remixicon/react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SignInButton } from '#src/components/auth/auth';
 import * as Alert from '#src/components/core/alert/alert';

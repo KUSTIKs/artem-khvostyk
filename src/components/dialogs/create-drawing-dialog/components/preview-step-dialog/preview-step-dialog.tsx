@@ -43,6 +43,9 @@ const PreviewStepDialog = () => {
       name: drawingName,
       drawing: drawingBlob,
     });
+    queryClient.invalidateQueries({
+      queryKey: ['remaining-days'],
+    });
     setIsOpen(false);
   };
 

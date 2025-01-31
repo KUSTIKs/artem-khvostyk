@@ -67,6 +67,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      calculate_days_until_new_drawing: {
+        Args: {
+          user_id: string
+        }
+        Returns: number
+      }
+      can_create_drawing: {
+        Args: {
+          user_id: string
+        }
+        Returns: boolean
+      }
       delete_user: {
         Args: Record<PropertyKey, never>
         Returns: undefined

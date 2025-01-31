@@ -11,12 +11,14 @@ type UserContextState =
       publicUser: Tables<'users'>;
       isAuthenticated: true;
       isLoaded: true;
+      remainingDays: number;
     }
   | {
       user: null;
       publicUser: null;
       isAuthenticated: false;
       isLoaded: boolean;
+      remainingDays: null;
     };
 
 type AuthContextState = (
@@ -38,6 +40,7 @@ const UserContext = createContext<UserContextState>({
   publicUser: null,
   isAuthenticated: false,
   isLoaded: false,
+  remainingDays: null,
 });
 
 const AuthContext = createContext<AuthContextState>({

@@ -27,8 +27,18 @@ const AppAuthProvider = async ({ children }: Props) => {
       .single()
       .then(({ data }) => data));
 
+  const remainingDays =
+    user &&
+    (await supabase
+      .rpc('calculate_days_until_new_drawing', { user_id: user.id })
+      .then(({ data }) => data));
+
   return (
-    <AuthProvider initialUser={user} initialPublicUser={publicUser}>
+    <AuthProvider
+      initialUser={user}
+      initialPublicUser={publicUser}
+      initialRemainingDays={remainingDays}
+    >
       {children}
     </AuthProvider>
   );

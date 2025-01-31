@@ -6,11 +6,13 @@ import {
   type ReactSketchCanvasRef,
 } from 'react-sketch-canvas';
 
+import * as Alert from '#src/components/core/alert/alert';
 import { Button } from '#src/components/core/button/button';
 import { pickerColors } from '#src/constants/colors';
 import { drawingUrlAtom } from '../../utils/store';
 import { ColorPicker } from '../color-picker/color-picker';
 
+import { RiErrorWarningLine } from '@remixicon/react';
 import { BackButton, ContinueButton, Counter } from '../common/common';
 import classes from './drawing-step-dialog.module.scss';
 
@@ -43,6 +45,11 @@ const DrawingStepDialog = () => {
         <Dialog.Description className={classes.description}>
           Your drawing will be displayed in guestbook
         </Dialog.Description>
+
+        <Alert.Root className={classes.alert}>
+          <RiErrorWarningLine className={classes.alertIcon} />
+          <p>You can only create one drawing every 14 days.</p>
+        </Alert.Root>
       </header>
 
       <div>

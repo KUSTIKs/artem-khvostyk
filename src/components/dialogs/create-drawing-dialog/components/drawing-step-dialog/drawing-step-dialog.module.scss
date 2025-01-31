@@ -18,3 +18,11 @@
   display: flex;
   gap: var(--space-2xs);
 }
+
+.alert {
+  margin-top: var(--space-sm);
+}
+
+.alertIcon {
+  color: hsl(var(--color-orange));
+}

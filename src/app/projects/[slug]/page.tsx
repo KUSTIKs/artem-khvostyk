@@ -61,7 +61,7 @@ const ProjectPage = async ({ params }: Props) => {
                   return (
                     <li key={link._key}>
                       <Button variant="outlined" asChild>
-                        <Link href={link.href}>
+                        <Link href={link.href} target="_blank">
                           {Icon && <Icon />}
                           {link.label}
                         </Link>

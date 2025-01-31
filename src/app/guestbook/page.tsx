@@ -1,15 +1,9 @@
-import { RiBrushLine } from '@remixicon/react';
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from '@tanstack/react-query';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
 import { SignedIn } from '#src/components/auth/auth';
-import { Button } from '#src/components/core/button/button';
-import { CreateDrawingDialog } from '#src/components/dialogs/create-drawing-dialog/create-drawing-dialog';
 import { getQueryClient } from '#src/utils/query-client';
 import { AuthAlert } from './_components/auth-alert/auth-alert';
+import { DrawSection } from './_components/draw-section/draw-section';
 import { DrawingsGallery } from './_components/drawings-gallery/drawings-gallery';
 import { getDrawingsQueryOptions } from './_utils/query-options';
 
@@ -26,14 +20,7 @@ const GuestbookPage = async () => {
         <h1 className={classes.title}>Guestbook</h1>
         <AuthAlert />
         <SignedIn>
-          <div className={classes.actions}>
-            <CreateDrawingDialog>
-              <Button variant="outlined">
-                <RiBrushLine />
-                Draw
-              </Button>
-            </CreateDrawingDialog>
-          </div>
+          <DrawSection />
         </SignedIn>
 
         <HydrationBoundary state={dehydrate(queryClient)}>

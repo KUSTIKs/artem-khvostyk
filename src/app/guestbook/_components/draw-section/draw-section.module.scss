@@ -1,0 +1,16 @@
+.section {
+  margin-top: var(--space-sm);
+}
+
+.caption {
+  font-weight: 500;
+  font-size: var(--fz-lg);
+  line-height: var(--lh-lg);
+  margin-top: var(--space-base);
+}
+
+.message {
+  color: hsl(var(--color-muted-foreground));
+  max-width: var(--container-text);
+  margin-bottom: var(--space-xs);
+}

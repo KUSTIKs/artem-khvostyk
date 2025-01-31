@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import type { SupabaseClient, User } from '@supabase/supabase-js';
 import { createClient } from '#src/utils/supabase/client';
 
 const uploadDrawing = async ({
@@ -71,4 +72,16 @@ const getDrawings = async (params?: {
   }
 };
 
-export { uploadDrawing, getDrawings };
+const getRemainingDays = async (
+  supabase: SupabaseClient,
+  userId: string,
+): Promise<number> => {
+  const { data: remainingDays } = await supabase.rpc(
+    'calculate_days_until_new_drawing',
+    { user_id: userId },
+  );
+
+  return remainingDays;
+};
+
+export { uploadDrawing, getDrawings, getRemainingDays };
