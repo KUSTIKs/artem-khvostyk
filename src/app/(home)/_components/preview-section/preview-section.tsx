@@ -24,10 +24,11 @@ const PreviewSection = ({ highlights, mainVideo }: Props) => {
           <source src={mainVideo.url} />
         </video>
         <figcaption className={classes.videoCaption}>
-          Video taken from{' '}
+          Video by{' '}
           <a href="https://dribbble.com/shots/25205879-Forest-Cabin">
             Roman Klčo
           </a>
+          .
         </figcaption>
       </figure>
     </section>
