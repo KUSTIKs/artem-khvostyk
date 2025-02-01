@@ -55,6 +55,7 @@ const NamingStepDialog = () => {
             <Form.Label>Drawing name:</Form.Label>
             <Form.Control
               placeholder="My masterpiece"
+              autoComplete="off"
               {...form.register('name')}
             />
             {errors.name && <Form.Message>{errors.name.message}</Form.Message>}

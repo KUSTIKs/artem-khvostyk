@@ -11,6 +11,10 @@ const tagIconsMap: { [key: string]: icons.RemixiconComponentType } = {
   storybook: icons.RiBookletLine,
   teamwork: icons.RiTeamLine,
   convex: icons.RiDatabase2Line,
+  supabase: icons.RiDatabase2Line,
+  sanity: icons.RiArticleLine,
+  canvas: icons.RiPaintBrushLine,
+  game: icons.RiGamepadLine,
 };
 
 const resourceIconsMap: { [key: string]: icons.RemixiconComponentType } = {

@@ -54,6 +54,10 @@
   --size-button-sm: calc((var(--space-xs) - 2px) * 2 + var(--lh-base));
 }
 
+* {
+  border-color: hsl(var(--border));
+}
+
 body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
@@ -61,10 +65,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
-}
-
-* {
-  border-color: hsl(var(--border));
 }
 
 button {
