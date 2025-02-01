@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
+import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 import { Button } from '#src/components/core/button/button';
 import { contactLink } from '#src/constants/links';
 import { getAboutPageContent } from '#src/services/sanity/about-page-content';
 
-import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
 import classes from './about.module.scss';
 
 const AboutPage = async () => {

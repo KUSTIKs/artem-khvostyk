@@ -1,3 +1,4 @@
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import Link from 'next/link';
 
 import { Button } from '#src/components/core/button/button';
@@ -20,7 +21,12 @@ const HeroSection = ({ title }: Props) => {
             <Link href={contactLink}>Get in touch</Link>
           </Button>
           <Button variant="outlined" asChild>
-            <Link href="/about">Read more</Link>
+            <Link href="/about">
+              Read more
+              <VisuallyHidden asChild>
+                <span> about me</span>
+              </VisuallyHidden>
+            </Link>
           </Button>
         </div>
       </div>

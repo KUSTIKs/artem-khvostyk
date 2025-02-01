@@ -7,10 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [
-      "./src/styles/reset.css",
-      "./src/utils/supabase/database.types.ts"
-    ]
+    "ignore": ["./src/styles/reset.css", "./src/types/database.ts"]
   },
   "formatter": {
     "enabled": true,

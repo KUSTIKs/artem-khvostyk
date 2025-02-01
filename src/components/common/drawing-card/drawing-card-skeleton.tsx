@@ -1,4 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
+
 import classes from './drawing-card.module.scss';
 
 const DrawingCardSkeleton = () => {

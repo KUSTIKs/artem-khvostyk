@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "supabase:gen-types": "test -d ./src/utils/supabase && pnpm dlx supabase gen types typescript --project-id oxoovtwsquiorbsxkkip > ./src/utils/supabase/database.types.ts"
+    "supabase:gen-types": "test -d ./src/types && pnpm dlx supabase gen types typescript --project-id oxoovtwsquiorbsxkkip > ./src/types/database.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "3.10.0",

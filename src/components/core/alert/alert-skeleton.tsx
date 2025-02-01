@@ -1,4 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
+
 import * as Alert from './alert';
 
 const AlertSkeleton = () => {

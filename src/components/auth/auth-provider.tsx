@@ -11,7 +11,7 @@ import {
   type UserContextState,
 } from '#src/utils/auth-context';
 import { createClient } from '#src/utils/supabase/client';
-import type { Tables } from '#src/utils/supabase/database.types';
+import type { Tables } from '#src/types/database.ts';
 
 type Props = {
   children: ReactNode;

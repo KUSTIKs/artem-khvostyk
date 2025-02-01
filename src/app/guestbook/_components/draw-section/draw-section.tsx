@@ -1,16 +1,16 @@
 'use client';
 
 import { RiBrushLine } from '@remixicon/react';
+import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 
 import { Button } from '#src/components/core/button/button';
 import { CreateDrawingDialog } from '#src/components/dialogs/create-drawing-dialog/create-drawing-dialog';
 import { useUser } from '#src/hooks/auth';
-import { pluralize } from '#src/utils/herlpers';
-
-import { useQuery } from '@tanstack/react-query';
-import { useMemo } from 'react';
 import { getRemainingDays } from '#src/services/drawings';
+import { pluralize } from '#src/utils/helpers';
 import { createClient } from '#src/utils/supabase/client';
+
 import classes from './draw-section.module.scss';
 
 const DrawSection = () => {

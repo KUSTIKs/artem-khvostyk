@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
-import type { SupabaseClient, User } from '@supabase/supabase-js';
 import { createClient } from '#src/utils/supabase/client';
 
 const uploadDrawing = async ({

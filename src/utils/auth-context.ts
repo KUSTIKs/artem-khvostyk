@@ -3,7 +3,7 @@
 import type { SignInWithOAuthCredentials, User } from '@supabase/supabase-js';
 import { createContext } from 'react';
 
-import type { Tables } from './supabase/database.types';
+import type { Tables } from '#src/types/database';
 
 type UserContextState =
   | {

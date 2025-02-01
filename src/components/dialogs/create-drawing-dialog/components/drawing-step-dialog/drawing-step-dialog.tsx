@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import { RiErrorWarningLine } from '@remixicon/react';
 import { useSetAtom } from 'jotai';
 import { useRef, useState } from 'react';
 import {
@@ -11,9 +12,8 @@ import { Button } from '#src/components/core/button/button';
 import { pickerColors } from '#src/constants/colors';
 import { drawingUrlAtom } from '../../utils/store';
 import { ColorPicker } from '../color-picker/color-picker';
-
-import { RiErrorWarningLine } from '@remixicon/react';
 import { BackButton, ContinueButton, Counter } from '../common/common';
+
 import classes from './drawing-step-dialog.module.scss';
 
 const DrawingStepDialog = () => {

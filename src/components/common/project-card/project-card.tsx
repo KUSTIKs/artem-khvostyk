@@ -1,12 +1,13 @@
 import { RiArrowRightLine } from '@remixicon/react';
 import Link from 'next/link';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import { Button } from '#src/components/core/button/button';
+import { MediaFile } from '#src/components/core/media-file/media-file';
 import { tagIconsMap } from '#src/constants/icons';
 import type { MediaFileSchema } from '#src/types/sanity';
 import { Tag } from '../tag/tag';
 
-import { MediaFile } from '#src/components/core/media-file/media-file';
 import classes from './project-card.module.scss';
 
 type Props = {
@@ -42,7 +43,11 @@ const ProjectCard = ({
           {href && (
             <Button variant="outlined" className={classes.button} asChild>
               <Link href={href}>
-                Read more <RiArrowRightLine />
+                Read more
+                <VisuallyHidden asChild>
+                  <span> about {title}</span>
+                </VisuallyHidden>
+                <RiArrowRightLine />
               </Link>
             </Button>
           )}
