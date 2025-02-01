@@ -15,3 +15,13 @@
   gap: var(--space-base);
   margin-bottom: var(--space-lg);
 }
+
+.videoCaption {
+  margin-top: var(--space-xs);
+  color: hsl(var(--color-muted-foreground));
+  font-size: var(--fz-base);
+  line-height: var(--lh-base);
+  a {
+    text-decoration: underline;
+  }
+}

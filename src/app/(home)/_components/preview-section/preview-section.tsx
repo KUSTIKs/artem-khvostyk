@@ -19,9 +19,17 @@ const PreviewSection = ({ highlights, mainVideo }: Props) => {
           />
         ))}
       </div>
-      <video muted autoPlay loop playsInline className={classes.video}>
-        <source src={mainVideo.url} />
-      </video>
+      <figure>
+        <video muted autoPlay loop playsInline className={classes.video}>
+          <source src={mainVideo.url} />
+        </video>
+        <figcaption className={classes.videoCaption}>
+          Video taken from{' '}
+          <a href="https://dribbble.com/shots/25205879-Forest-Cabin">
+            Roman Klčo
+          </a>
+        </figcaption>
+      </figure>
     </section>
   );
 };
