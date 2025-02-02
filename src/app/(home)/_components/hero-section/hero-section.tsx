@@ -15,7 +15,7 @@ const HeroSection = ({ title }: Props) => {
     <section className={classes.section}>
       <div className={classes.wrapper}>
         <HeroIllustration className={classes.illustration} />
-        <h1 className={classes.text}>{title}</h1>
+        <h1 className={classes.title}>{title}</h1>
         <div className={classes.actions}>
           <Button asChild>
             <Link href={contactLink}>Get in touch</Link>

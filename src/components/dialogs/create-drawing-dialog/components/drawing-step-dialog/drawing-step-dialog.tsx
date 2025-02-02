@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { RiErrorWarningLine } from '@remixicon/react';
-import { useSetAtom } from 'jotai';
-import { useRef, useState } from 'react';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { useEffect, useRef } from 'react';
 import {
   ReactSketchCanvas,
   type ReactSketchCanvasRef,
@@ -9,17 +9,26 @@ import {
 
 import * as Alert from '#src/components/core/alert/alert';
 import { Button } from '#src/components/core/button/button';
-import { pickerColors } from '#src/constants/colors';
-import { drawingUrlAtom } from '../../utils/store';
+import {
+  colorAtom,
+  drawingUrlAtom,
+  isEraserActiveAtom,
+  strokeWidthAtom,
+} from '../../utils/store';
 import { ColorPicker } from '../color-picker/color-picker';
 import { BackButton, ContinueButton, Counter } from '../common/common';
+import { EraserToggle } from '../eraser-toggle/eraser-toggle';
+import { StrokeWidthInput } from '../stroke-width-input/stroke-width-input';
 
 import classes from './drawing-step-dialog.module.scss';
 
 const DrawingStepDialog = () => {
-  const canvasRef = useRef<ReactSketchCanvasRef>(null);
-  const [color, setColor] = useState(pickerColors[0]);
+  const [isEraserActive, setIsEraserActive] = useAtom(isEraserActiveAtom);
   const setDrawingUrl = useSetAtom(drawingUrlAtom);
+  const strokeWidth = useAtomValue(strokeWidthAtom);
+  const color = useAtomValue(colorAtom);
+
+  const canvasRef = useRef<ReactSketchCanvasRef>(null);
 
   const handleUndo = () => {
     canvasRef.current?.undo();
@@ -37,6 +46,15 @@ const DrawingStepDialog = () => {
 
     setDrawingUrl(image);
   };
+
+  useEffect(() => {
+    canvasRef.current?.eraseMode(isEraserActive);
+  }, [isEraserActive]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: reset eraser when color is set
+  useEffect(() => {
+    setIsEraserActive(false);
+  }, [color, setIsEraserActive]);
 
   return (
     <>
@@ -60,12 +78,19 @@ const DrawingStepDialog = () => {
             style={{ border: 'none' }}
             canvasColor="white"
             strokeColor={color}
-            strokeWidth={24}
+            strokeWidth={strokeWidth}
+            eraserWidth={strokeWidth}
           />
         </div>
-        <div className={classes.canvasFooter}>
-          <ColorPicker color={color} onColorChange={setColor} />
-          <div className={classes.actions}>
+
+        <div className={classes.tools}>
+          <div className={classes.toolsGroup}>
+            <ColorPicker />
+            <StrokeWidthInput />
+            <EraserToggle />
+          </div>
+
+          <div className={classes.toolsGroup}>
             <Button variant="ghost" onClick={handleUndo}>
               Undo
             </Button>

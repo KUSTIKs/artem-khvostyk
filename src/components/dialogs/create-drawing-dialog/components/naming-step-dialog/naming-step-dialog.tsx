@@ -22,11 +22,12 @@ const NamingStepDialog = () => {
   const drawingUrl = useAtomValue(drawingUrlAtom);
   const setActiveStepIndex = useSetAtom(activeStepIndexAtom);
   const [name, setName] = useAtom(drawingNameAtom);
+  const formId = useId();
+
   const form = useForm<NameDrawingSchemaType>({
     resolver: zodResolver(nameDrawingSchema),
     defaultValues: { name: name || '' },
   });
-  const formId = useId();
 
   const { errors } = form.formState;
 

@@ -1,6 +1,6 @@
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { RiArrowRightLine } from '@remixicon/react';
 import Link from 'next/link';
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import { Button } from '#src/components/core/button/button';
 import { MediaFile } from '#src/components/core/media-file/media-file';

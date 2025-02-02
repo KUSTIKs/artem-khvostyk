@@ -1,0 +1,13 @@
+.input {
+  width: 90px;
+}
+
+.control {
+  appearance: none;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}

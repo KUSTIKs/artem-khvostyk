@@ -9,14 +9,14 @@
   margin-bottom: var(--space-base);
 }
 
-.canvasFooter {
+.tools {
   display: flex;
   justify-content: space-between;
 }
 
-.canvasActions {
+.toolsGroup {
   display: flex;
-  gap: var(--space-2xs);
+  gap: var(--space-xs);
 }
 
 .alert {

@@ -4,6 +4,7 @@ import type { User } from '@supabase/supabase-js';
 import { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { signIn, signOut } from '#src/services/auth';
+import type { Tables } from '#src/types/database.ts';
 import {
   AuthContext,
   type AuthContextState,
@@ -11,7 +12,6 @@ import {
   type UserContextState,
 } from '#src/utils/auth-context';
 import { createClient } from '#src/utils/supabase/client';
-import type { Tables } from '#src/types/database.ts';
 
 type Props = {
   children: ReactNode;

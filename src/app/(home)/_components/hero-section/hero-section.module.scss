@@ -12,8 +12,8 @@
   user-select: none;
 }
 
-.text {
-  font-size: var(--fz-5xl);
+.title {
+  font-size: clamp(var(--fz-4xl), 5vw, var(--fz-5xl));
   line-height: 1.1em;
   max-width: 650px;
   text-wrap: auto;

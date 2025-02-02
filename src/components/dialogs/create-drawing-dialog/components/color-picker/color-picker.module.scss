@@ -3,12 +3,28 @@
   gap: var(--space-xs);
 }
 
-.color {
-  border-radius: 50%;
+.swatch {
   height: var(--size-button-base);
   width: var(--size-button-base);
-  background-color: hsl(var(--color-muted));
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+.content {
+  z-index: 99999;
+  background-color: hsl(var(--color-background));
+  padding: var(--space-sm);
+  border-radius: calc(var(--radius) + var(--space-xs));
+  box-shadow: hsl(0 0% 0% / 35%) 0px 10px 38px -10px,
+    hsl(0 0% 0% / 35%) 0px 10px 20px -15px, 0 0 0 1px hsl(var(--color-border));
+  display: grid;
+  gap: var(--space-xs);
+  grid-template-columns: repeat(6, var(--size-button-base));
+}
+
+.arrow {
+  fill: hsl(var(--color-background));
 }
 
 .indicator {
@@ -16,8 +32,12 @@
   display: block;
   inset: var(--space-2xs);
   box-shadow: 0 0 0 var(--space-2xs) inset white;
-  border-radius: 50%;
+  border-radius: calc(var(--radius) - var(--space-2xs));
   animation: indicatorShow 150ms ease;
+}
+
+.control {
+  grid-column: span 3;
 }
 
 @keyframes indicatorShow {
