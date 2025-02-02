@@ -33,7 +33,7 @@ const ProjectCard = ({
         <div className={classes.content}>
           <h3 className={classes.title}>{title}</h3>
           <p className={classes.description}>{description}</p>
-          <ul className={classes.services}>
+          <ul className={classes.tags}>
             {tags.map((tag) => (
               <li key={tag.value}>
                 <Tag name={tag.name} icon={tagIconsMap[tag.value]} />

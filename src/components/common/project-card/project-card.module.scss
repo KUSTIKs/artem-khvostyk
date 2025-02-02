@@ -37,10 +37,11 @@
   margin-bottom: var(--space-sm);
 }
 
-.services {
+.tags {
   display: flex;
-  gap: var(--space-base);
+  gap: var(--space-xs) var(--space-base);
   margin-bottom: var(--space-base);
+  flex-wrap: wrap;
 }
 
 .button {
