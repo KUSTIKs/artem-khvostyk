@@ -31,10 +31,10 @@ const AuthProvider = ({
   const [isLoaded, setIsLoaded] = useState(true);
   const [remainingDays, setRemainingDays] = useState(initialRemainingDays);
 
+  const supabase = useMemo(() => createClient(), []);
+
   const isAuthenticated =
     user && publicUser && isLoaded && remainingDays !== null;
-
-  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event) => {

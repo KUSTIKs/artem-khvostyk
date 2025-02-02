@@ -6,7 +6,7 @@ import { DrawingCardPreview } from '#src/components/common/drawing-card-placehol
 import { DrawingCard } from '#src/components/common/drawing-card/drawing-card';
 import { useUser } from '#src/hooks/auth';
 import { uploadDrawing } from '#src/services/drawings';
-import { base64ToBlob } from '#src/utils/base64-to-blob';
+import { base64ToBlob } from '#src/utils/helpers';
 import { drawingNameAtom, drawingUrlAtom, isOpenAtom } from '../../utils/store';
 import { BackButton, Counter, SubmitButton } from '../common/common';
 

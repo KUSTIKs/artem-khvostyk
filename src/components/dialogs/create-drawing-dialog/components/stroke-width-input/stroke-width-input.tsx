@@ -9,6 +9,7 @@ import {
 
 import * as Input from '#src/components/core/input/input';
 import { maxStrokeWidth, minStrokeWidth } from '#src/constants/canvas';
+import { keyNames } from '#src/constants/key-names';
 import { strokeWidthAtom } from '../../utils/store';
 
 import classes from './stroke-width-input.module.scss';
@@ -21,7 +22,7 @@ const StrokeWidthInput = () => {
     setValue(event.target.valueAsNumber);
   };
   const handleKeyDown: KeyboardEventHandler = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === keyNames.enter) {
       updateWidth();
     }
   };

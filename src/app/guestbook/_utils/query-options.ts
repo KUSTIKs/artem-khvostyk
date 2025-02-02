@@ -2,7 +2,7 @@ import { infiniteQueryOptions } from '@tanstack/react-query';
 
 import { drawingsPerPage } from '#src/constants/guestbook';
 import { getDrawings } from '#src/services/drawings';
-import { getPaginationRange } from '#src/utils/get-pagination-range';
+import { getPaginationRange } from '#src/utils/helpers';
 
 const getDrawingsQueryOptions = infiniteQueryOptions({
   queryKey: ['drawings'],

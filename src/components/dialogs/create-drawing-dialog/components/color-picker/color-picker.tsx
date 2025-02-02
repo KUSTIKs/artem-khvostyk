@@ -10,6 +10,8 @@ import {
 
 import * as Input from '#src/components/core/input/input';
 import { pickerColors } from '#src/constants/canvas';
+import { keyNames } from '#src/constants/key-names';
+import { validateHexColor } from '#src/utils/helpers';
 import { colorAtom } from '../../utils/store';
 
 import classes from './color-picker.module.scss';
@@ -22,16 +24,13 @@ const ColorPicker = () => {
     setValue(event.target.value);
   };
   const handleKeyDown: KeyboardEventHandler = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === keyNames.enter) {
       updateColor();
     }
   };
 
   const updateColor = () => {
-    const isValidFormat = value.startsWith('#') && value.length === 7;
-    const colorValue = Number(`0x${value.slice(1)}`);
-
-    const isValidColor = isValidFormat && !Number.isNaN(colorValue);
+    const isValidColor = validateHexColor(value);
 
     if (!isValidColor) {
       setValue(color);
