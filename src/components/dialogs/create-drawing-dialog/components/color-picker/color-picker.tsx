@@ -47,9 +47,11 @@ const ColorPicker = () => {
 
   return (
     <Popover.Root>
-      <Popover.Trigger asChild>
-        <div className={classes.swatch} style={{ backgroundColor: color }} />
-      </Popover.Trigger>
+      <Popover.Trigger
+        className={classes.swatch}
+        aria-label="current color"
+        style={{ backgroundColor: color }}
+      />
       <Popover.Portal>
         <Popover.Content side="top" sideOffset={10} align="start" asChild>
           <Radio.Root
