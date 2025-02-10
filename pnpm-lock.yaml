@@ -41,6 +41,9 @@ importers:
       '@remixicon/react':
         specifier: 4.6.0
         version: 4.6.0(react@19.0.0)
+      '@rive-app/react-canvas-lite':
+        specifier: 4.17.10
+        version: 4.17.10(react@19.0.0)
       '@sanity/asset-utils':
         specifier: 2.2.1
         version: 2.2.1
@@ -796,6 +799,14 @@ packages:
     resolution: {integrity: sha512-bY56maEgT5IYUSRotqy9h03IAKJC85vlKtWFg2FKzfs8JPrkdBAYSa9dxoUSKFwGzup8Ux6vjShs9Aec3jvr2w==}
     peerDependencies:
       react: '>=18.2.0'
+
+  '@rive-app/canvas-lite@2.25.7':
+    resolution: {integrity: sha512-SiNup59TIUBsCFgC8J34vY3Kah5lSaBk5D6HTfBay88eM6dwhaE0ZbJsnigjS2vps+cBupDFOIg/PthAUBTFQg==}
+
+  '@rive-app/react-canvas-lite@4.17.10':
+    resolution: {integrity: sha512-PuasP7ceu+8s0e2EoFciDQ/r+MVkPp6LjqgDEu+ZQOhmXAPRO4rkMgBsT5O88NAuIlP1NflVh+DZWj/oHkJ6eQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0
 
   '@sanity/asset-utils@2.2.1':
     resolution: {integrity: sha512-dBsZWH5X6ANcvclFRnQT9Y+NNvoWTJZIMKR5HT6hzoRpRb48p7+vWn+wi1V1wPvqgZg2ScsOQQcGXWXskbPbQQ==}
@@ -1880,6 +1891,13 @@ snapshots:
 
   '@remixicon/react@4.6.0(react@19.0.0)':
     dependencies:
+      react: 19.0.0
+
+  '@rive-app/canvas-lite@2.25.7': {}
+
+  '@rive-app/react-canvas-lite@4.17.10(react@19.0.0)':
+    dependencies:
+      '@rive-app/canvas-lite': 2.25.7
       react: 19.0.0
 
   '@sanity/asset-utils@2.2.1': {}

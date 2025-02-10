@@ -1,0 +1,7 @@
+.wrapper {
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--color-border));
+  aspect-ratio: 5 / 3;
+  overflow: hidden;
+  width: 100%;
+}

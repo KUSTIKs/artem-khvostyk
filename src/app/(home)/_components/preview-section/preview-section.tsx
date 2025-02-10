@@ -1,5 +1,6 @@
 import { HighlightCard } from '#src/components/common/highlight-card/highlight-card';
 import type { HomePageContentSchema } from '#src/types/sanity';
+import { CatIllustration } from '../cat-illustration/cat-illustration';
 
 import classes from './preview-section.module.scss';
 
@@ -20,13 +21,11 @@ const PreviewSection = ({ highlights, mainVideo }: Props) => {
         ))}
       </div>
       <figure>
-        <video muted autoPlay loop playsInline className={classes.video}>
-          <source src={mainVideo.url} />
-        </video>
-        <figcaption className={classes.videoCaption}>
-          Video by{' '}
-          <a href="https://dribbble.com/shots/25205879-Forest-Cabin">
-            Roman Klčo
+        <CatIllustration />
+        <figcaption className={classes.figcaption}>
+          Just a cute little cat. You can remix it in{' '}
+          <a href="https://rive.app/community/files/16782-31554-cute-cat">
+            Rive
           </a>
           .
         </figcaption>
