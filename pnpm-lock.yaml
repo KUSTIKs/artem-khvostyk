@@ -95,6 +95,9 @@ importers:
       sass:
         specifier: 1.83.4
         version: 1.83.4
+      schema-dts:
+        specifier: 1.1.2
+        version: 1.1.2(typescript@5.7.3)
       uuid:
         specifier: 11.0.5
         version: 11.0.5
@@ -1218,6 +1221,11 @@ packages:
   scheduler@0.25.0:
     resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
+  schema-dts@1.1.2:
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
     engines: {node: '>=10'}
@@ -2274,6 +2282,10 @@ snapshots:
       '@parcel/watcher': 2.5.0
 
   scheduler@0.25.0: {}
+
+  schema-dts@1.1.2(typescript@5.7.3):
+    dependencies:
+      typescript: 5.7.3
 
   semver@7.6.3:
     optional: true
