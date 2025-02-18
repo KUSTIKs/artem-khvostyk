@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
@@ -14,6 +15,28 @@ type Props = {
   params: Promise<{
     slug: string;
   }>;
+};
+
+const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { slug } = await params;
+  const project = await getProject({ slug });
+
+  const media =
+    project.preview?.type === 'image'
+      ? { images: project.preview.image.src }
+      : { videos: project.preview?.video.src };
+
+  return {
+    title: project.title,
+    openGraph: {
+      title: project.title,
+      ...media,
+    },
+    twitter: {
+      title: project.title,
+      ...media,
+    },
+  };
 };
 
 const ProjectPage = async ({ params }: Props) => {
@@ -88,3 +111,4 @@ const ProjectPage = async ({ params }: Props) => {
 };
 
 export default ProjectPage;
+export { generateMetadata };

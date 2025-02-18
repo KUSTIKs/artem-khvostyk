@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
+
 import classes from './thoughts.module.scss';
+
+const metadata: Metadata = {
+  title: 'Thoughts',
+};
 
 const ThoughtsPage = () => {
   return (
@@ -12,3 +18,4 @@ const ThoughtsPage = () => {
 };
 
 export default ThoughtsPage;
+export { metadata };

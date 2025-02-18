@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
+
 import { ProjectCard } from '#src/components/common/project-card/project-card';
 import { getProjects } from '#src/services/sanity/projects';
 
 import classes from './projects.module.scss';
+
+const metadata: Metadata = {
+  title: 'Projects',
+};
 
 const ProjectsPage = async () => {
   const projects = await getProjects();
@@ -36,3 +42,4 @@ const ProjectsPage = async () => {
 };
 
 export default ProjectsPage;
+export { metadata };

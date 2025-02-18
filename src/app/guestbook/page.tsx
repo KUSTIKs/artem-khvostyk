@@ -1,4 +1,5 @@
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import type { Metadata } from 'next';
 
 import { SignedIn } from '#src/components/auth/auth';
 import { getQueryClient } from '#src/utils/query-client';
@@ -8,6 +9,10 @@ import { DrawingsGallery } from './_components/drawings-gallery/drawings-gallery
 import { getDrawingsQueryOptions } from './_utils/query-options';
 
 import classes from './guestbook.module.scss';
+
+const metadata: Metadata = {
+  title: 'Guestbook',
+};
 
 const GuestbookPage = async () => {
   const queryClient = getQueryClient();
@@ -32,3 +37,4 @@ const GuestbookPage = async () => {
 };
 
 export default GuestbookPage;
+export { metadata };

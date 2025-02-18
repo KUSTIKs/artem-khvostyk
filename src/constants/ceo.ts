@@ -19,7 +19,10 @@ const structuredData: WithContext<Person> = {
 };
 
 const metadata: Metadata = {
-  title: 'Artem Khvostyk | KUSTIK - Personal Website',
+  title: {
+    template: '%s | Kustik',
+    default: 'Kustik | Personal Website',
+  },
   description:
     "Developer with a growing interest in design. Explore my projects and if you're feeling creative, leave a drawing in the guestbook.",
   openGraph: {

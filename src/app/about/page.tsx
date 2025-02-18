@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
@@ -6,6 +7,10 @@ import { contactLink } from '#src/constants/links';
 import { getAboutPageContent } from '#src/services/sanity/about-page-content';
 
 import classes from './about.module.scss';
+
+const metadata: Metadata = {
+  title: 'About',
+};
 
 const AboutPage = async () => {
   const { content } = await getAboutPageContent();
@@ -28,3 +33,4 @@ const AboutPage = async () => {
 };
 
 export default AboutPage;
+export { metadata };
