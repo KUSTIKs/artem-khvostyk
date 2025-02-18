@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
 import { StyledPortableText } from '#src/components/common/styled-portable-text/styled-portable-text';
@@ -17,24 +17,36 @@ type Props = {
   }>;
 };
 
-const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+const generateMetadata = async (
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> => {
   const { slug } = await params;
   const project = await getProject({ slug });
 
-  const media =
-    project.preview?.type === 'image'
-      ? { images: project.preview.image.src }
-      : { videos: project.preview?.video.src };
+  const parentImages = (await parent).openGraph?.images;
+  const images = parentImages ?? [];
+
+  if (project.preview?.type === 'image') {
+    images.unshift(project.preview.image.src);
+  } else if (project.preview?.type === 'video') {
+    if (project.preview.video.thumbnail) {
+      images.unshift(project.preview.video.thumbnail.src);
+    }
+  }
 
   return {
     title: project.title,
+    description: project.description,
     openGraph: {
       title: project.title,
-      ...media,
+      description: project.description,
+      images,
     },
     twitter: {
       title: project.title,
-      ...media,
+      description: project.description,
+      images,
     },
   };
 };
