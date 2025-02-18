@@ -17,40 +17,6 @@ type Props = {
   }>;
 };
 
-const generateMetadata = async (
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> => {
-  const { slug } = await params;
-  const project = await getProject({ slug });
-
-  const parentImages = (await parent).openGraph?.images;
-  const images = parentImages ?? [];
-
-  if (project.preview?.type === 'image') {
-    images.unshift(project.preview.image.src);
-  } else if (project.preview?.type === 'video') {
-    if (project.preview.video.thumbnail) {
-      images.unshift(project.preview.video.thumbnail.src);
-    }
-  }
-
-  return {
-    title: project.title,
-    description: project.description,
-    openGraph: {
-      title: project.title,
-      description: project.description,
-      images,
-    },
-    twitter: {
-      title: project.title,
-      description: project.description,
-      images,
-    },
-  };
-};
-
 const ProjectPage = async ({ params }: Props) => {
   const { slug } = await params;
   const project = await getProject({ slug });
@@ -120,6 +86,40 @@ const ProjectPage = async ({ params }: Props) => {
       </div>
     </main>
   );
+};
+
+const generateMetadata = async (
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> => {
+  const { slug } = await params;
+  const project = await getProject({ slug });
+
+  const parentImages = (await parent).openGraph?.images;
+  const images = parentImages ?? [];
+
+  if (project.preview?.type === 'image') {
+    images.push(project.preview.image.src);
+  } else if (project.preview?.type === 'video') {
+    if (project.preview.video.thumbnail) {
+      images.push(project.preview.video.thumbnail.src);
+    }
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      images,
+    },
+    twitter: {
+      title: project.title,
+      description: project.description,
+      images,
+    },
+  };
 };
 
 export default ProjectPage;
