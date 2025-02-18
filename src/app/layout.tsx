@@ -24,8 +24,8 @@ type Props = {
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
-      <StructuredData data={structuredData} />
       <body className={inter.className}>
+        <StructuredData data={structuredData} />
         <AppProviders>
           <Header />
           {children}
