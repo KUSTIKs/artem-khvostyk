@@ -5,6 +5,7 @@
   display: flex;
   gap: var(--space-xs);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .title {
